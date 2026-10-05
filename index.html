@@ -1,221 +1,398 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>라이트로드 | 스마트 조명제어 교통안전시설</title>
-  <meta name="description" content="㈜라이트로드 — 스마트 조명제어 통합관리 시스템으로 교통안전, 에너지 절감, 빛공해 저감에 기여합니다." />
-  <meta property="og:title" content="라이트로드 | 스마트 조명제어 교통안전시설" />
-  <meta property="og:description" content="스마트 조명제어 통합관리 시스템, 3방향 큐빅형 조도시스템, 최적 휘도표출 알고리즘" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.light-road.com/" />
-  <meta name="format-detection" content="telephone=no" />
-  <link rel="icon" href="favicon.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0e1117; --card:#161a22; --muted:#8b95a7; --text:#e6e9ef; --brand:#62d3ff; --brand2:#7cf7c6;
-      --max:1100px; --radius:20px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;color:var(--text);background:var(--bg);font-family: "Pretendard", system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif;}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;background:rgba(14,17,23,.6);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid #222;z-index:10}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .logo{font-weight:700;letter-spacing:.2px}
-    .logo b{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .menu a{margin-left:18px;color:var(--muted)}
-    .menu a:hover{color:#fff}
-    .hero{padding:96px 0;background:radial-gradient(1200px 500px at 20% -10%, rgba(98,211,255,.12), transparent), radial-gradient(900px 400px at 90% -20%, rgba(124,247,198,.12), transparent)}
-    .hero h1{font-size:42px;line-height:1.2;margin:0 0 12px}
-    .hero p{color:var(--muted);font-size:18px;margin:0 0 28px}
-    .cta{display:inline-block;padding:14px 20px;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#0b1020;border-radius:12px;font-weight:700}
-    .grid{display:grid;gap:20px}
-    .card{background:var(--card);border:1px solid #222;border-radius:var(--radius);padding:22px}
-    h2{margin:8px 0 16px;font-size:28px}
-    h3{margin:6px 0 10px;font-size:20px}
-    .muted{color:var(--muted)}
-    .kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    .kpi .card{padding:18px;text-align:center}
-    .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#1b2331;border:1px solid #2a3242;color:#a9b6d6;font-size:12px;margin-right:6px}
-    .list{padding-left:18px;margin:8px 0}
-    .list li{margin:6px 0}
-    .footer{border-top:1px solid #222;background:#0c0f14;padding:40px 0;color:#aeb6c4}
-    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-    .contact a.u{border-bottom:1px dashed #4bd1ff}
-    @media (max-width:900px){
-      .cols{grid-template-columns:1fr}
-      .kpi{grid-template-columns:1fr 1fr}
-      .hero{padding:72px 0}
-      .hero h1{font-size:34px}
-    }
-    @media (max-width:560px){
-      .kpi{grid-template-columns:1fr}
-    }
-    .tag{font-size:12px;color:#9fb2c7;border:1px solid #2a384b;padding:4px 8px;border-radius:999px;margin-right:6px}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라이트로드 | 정밀 조도센서 기반 자동 휘도제어 LED 교통신호등</title>
+<meta name="description" content="도로교통공단 사내벤처 1호 ㈜라이트로드. 교차로 밝기를 측정해 신호등 밝기를 스스로 맞추는 LED 교통신호등. 경찰청 R02 성능시험 적합, 추가 배선 없이 설치.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="라이트로드 | 정밀 조도센서 기반 자동 휘도제어 LED 교통신호등">
+<meta property="og:description" content="밤에는 눈부시지 않게, 낮에는 또렷하게. 경찰청 R02 성능시험 적합, 기존 제어기 그대로 설치.">
+<meta property="og:url" content="https://www.light-road.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1A26; --muted:#4A5866; --line:#D9E0E7; --alt:#F3F6F9;
+  --navy:#0B1B2B; --navy-line:#23384D; --blue:#0A63BF; --blue-dark:#084C93;
+  --sky:#9CC6F0; --soft:#D3DEE9;
+  --red:#E1251B; --yellow:#F5C400; --green:#1E9E4A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--ink);background:#fff;line-height:1.6;word-break:keep-all}
+a{color:var(--blue)} a:hover{color:var(--blue-dark)}
+a:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+.alt{background:var(--alt)}
+.dark{background:var(--navy);color:#fff}
+.kicker{font-size:14px;font-weight:700;color:var(--blue)}
+.dark .kicker{color:var(--sky)}
+h2{font-size:34px;line-height:1.3;letter-spacing:-.5px}
+.lead{font-size:17px;color:var(--muted)}
+.dark .lead{color:var(--soft)}
+.head{display:flex;flex-direction:column;gap:12px;max-width:760px;margin-bottom:40px}
+.row{display:flex;flex-wrap:wrap;gap:48px}
+.col{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:16px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.logo{display:block;text-decoration:none;line-height:0}
+.logo img{display:block;height:51px;width:auto}
+.logo span.word{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-style:italic;font-size:20px;padding:4px 18px;transform:skewX(-12deg)}
+.stripe{display:flex;height:4px;width:132px}
+.stripe i{flex:1}
+.stripe i:nth-child(1){background:var(--red)} .stripe i:nth-child(2){background:var(--yellow)} .stripe i:nth-child(3){background:var(--green)}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px;font-size:15px;font-weight:500}
+nav a{color:var(--ink);text-decoration:none;padding:10px 0}
+nav a:hover{color:var(--blue)}
+nav a.cta{color:#fff;background:var(--blue);padding:10px 18px;border-radius:6px}
+nav a.cta:hover{background:var(--blue-dark);color:#fff}
+
+/* hero */
+.hero{padding:0}
+.hero .inner{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:88px;padding-bottom:72px}
+.hero .text{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.hero h1{font-size:52px;line-height:1.2;letter-spacing:-1px}
+.hero p.sub{font-size:19px;color:var(--soft);max-width:560px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:14px 24px;border-radius:6px}
+.btn.white{background:#fff;color:var(--navy)}
+.btn.white:hover{background:var(--soft);color:var(--navy)}
+.btn.ghost{border:1px solid #6E8396;color:#fff;font-weight:500}
+.btn.ghost:hover{border-color:#fff;color:#fff}
+.badges{border-top:1px solid var(--navy-line)}
+.badges .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:20px;padding-bottom:20px;font-size:14px;color:#C5D3E0}
+
+/* photo slots: upload the named image and it appears; until then the label shows */
+.photo{position:relative;overflow:hidden;border:1px dashed #B7C3CF;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;color:#6A7886;font-size:14px;text-align:center;padding:24px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.hero .photo img{background:var(--navy)}
+.photo.filled{border-style:solid;border-color:var(--line)}
+.dark .photo,.hero .photo{background:transparent;border-color:#4D6175;color:#8FA3B6}
+.hero .photo{flex:1 1 400px;min-width:0;height:360px}
+.hero .photo.hero-fig{flex:1 1 520px;height:auto;aspect-ratio:1396/1046;padding:0;border:0;border-radius:10px;background:#fff}
+.hero .photo.hero-fig img{background:#fff}
+
+/* numbers */
+.stats{display:flex;flex-wrap:wrap;gap:24px;padding-top:64px;padding-bottom:64px}
+.stat{flex:1 1 240px;display:flex;flex-direction:column;gap:6px;padding:24px;background:var(--alt);border-radius:8px}
+.stat b{font-size:40px;color:var(--blue);line-height:1.2}
+.stat strong{font-weight:700}
+.stat small{font-size:14px;color:var(--muted)}
+
+.fact{background:#fff;border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:4px}
+.fact b{font-size:28px}
+.fact span{font-size:15px;color:var(--muted)}
+
+/* steps */
+.steps{display:flex;flex-wrap:wrap;gap:24px}
+.step{flex:1 1 300px;min-width:0;border:1px solid var(--line);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.step .n{width:40px;height:40px;border-radius:20px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.step h3{font-size:21px}
+.step p{color:var(--muted)}
+.step .photo{height:220px;padding:12px}
+.note{background:var(--alt);border-radius:8px;padding:20px 24px;font-size:15px;color:#33424F;margin-top:24px}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+table{width:100%;min-width:760px;border-collapse:collapse;font-size:15px}
+th,td{padding:14px 16px;text-align:left;vertical-align:top}
+thead tr{background:var(--alt)}
+tbody tr{border-top:1px solid var(--line)}
+th.us{background:var(--blue);color:#fff}
+td.us{font-weight:700}
+td.src{color:var(--muted)}
+h3.sub{font-size:21px;margin:40px 0 12px}
+
+/* cost */
+.ledger{flex:1 1 420px;min-width:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ledger div{display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ledger div span:last-child{font-weight:700;white-space:nowrap}
+.ledger div.total{background:var(--navy);color:#fff;border-bottom:0;padding:18px 20px}
+.ledger div.total span{font-weight:700}
+.ledger div.total span:last-child{font-size:20px}
+
+/* buy */
+.cards{display:flex;flex-wrap:wrap;gap:24px}
+.card{flex:1 1 260px;min-width:0;background:#fff;border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:18px}
+.card p{color:var(--muted);font-size:15px}
+
+/* docs */
+.docs{display:flex;flex-wrap:wrap;gap:16px}
+.docs a{flex:1 1 260px;display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:20px 22px;text-decoration:none;color:var(--ink);font-weight:500}
+.docs a span{color:var(--blue);font-size:14px;white-space:nowrap}
+.docs a:hover{border-color:var(--blue)}
+
+/* company */
+.people{display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--soft)}
+.people b{color:#fff}
+.ip{border:1px solid var(--navy-line);border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.ip span{font-size:15px;color:#C5D3E0}
+
+/* contact */
+.contact{flex:1 1 420px;min-width:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:16px}
+.contact div{display:flex;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.contact div:last-child{border-bottom:0}
+.contact div > span:first-child{width:72px;flex-shrink:0;color:var(--muted)}
+.contact a{text-decoration:none;font-weight:700}
+
+footer{background:var(--alt);border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:28px;padding-bottom:28px;font-size:13px;color:var(--muted)}
+
+@media (max-width:720px){
+  section{padding:56px 0}
+  .hero .inner{padding-top:48px;padding-bottom:48px}
+  .hero h1{font-size:36px}
+  .hero .photo{height:240px}
+  h2{font-size:27px}
+  header{position:static}
+  nav{gap:0 16px;font-size:14px}
+  .stat b{font-size:32px}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <div class="logo"><b>LIGHT</b>ROAD</div>
-      <nav class="menu">
-        <a href="#about">회사소개</a>
-        <a href="#products">제품</a>
-        <a href="#tech">핵심기술</a>
-        <a href="#milestones">성과</a>
-        <a href="#contact">문의</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="logo" aria-label="라이트로드 처음으로">
+      <img src="images/logo.png" alt="Light-Road 라이트로드" width="140" height="51">
+    </a>
+    <nav aria-label="주 메뉴">
+      <a href="#product">제품</a>
+      <a href="#tech">핵심기술</a>
+      <a href="#proof">시험·인증</a>
+      <a href="#cost">경제성</a>
+      <a href="#buy">도입 안내</a>
+      <a href="#docs">자료실</a>
+      <a href="#company">회사소개</a>
+      <a href="#contact" class="cta">도입 문의</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="top" class="hero dark">
+  <div class="wrap inner">
+    <div class="text">
+      <p class="kicker">도로교통공단 사내벤처 1호 기업</p>
+      <h1>밤에는 눈부시지 않게,<br>낮에는 또렷하게.</h1>
+      <p class="sub">정밀 조도센서 기반 자동 휘도제어 LED 교통신호등. 교차로의 실제 밝기를 측정해 신호등 밝기를 스스로 맞춥니다. 기존 신호제어기 그대로, 추가 배선 공사 없이 설치합니다.</p>
+      <div class="btns">
+        <a href="#docs" class="btn white">제품 자료 받기</a>
+        <a href="#contact" class="btn ghost">시연·도입 문의</a>
+      </div>
+    </div>
+    <div class="photo hero-fig">제품 개념도<img src="images/hero-diagram.jpg" alt="정밀 조도센서 기반 자동 휘도제어 LED신호등 개념도: 차량 신호등 A그룹은 A센서부가, 보행 신호등 B그룹은 B센서부가 통합 제어하며 단일 센서로 A, B 통합 제어도 가능" onerror="this.remove()"></div>
+  </div>
+  <div class="badges">
     <div class="wrap">
-      <span class="badge">Smart Traffic Safety · Lighting Control</span>
-      <h1>스마트 조명제어 통합관리로<br/>교통안전과 에너지 절감을 한 번에</h1>
-      <p>도로상의 모든 ‘빛’ 정보를 통합 제어하여 외부 환경에 맞춘 최적 밝기와 표출을 구현합니다. 빛공해 저감 · 교통안전 향상 · 국민 건강 및 에너지 절감에 기여합니다.</p>
-      <a class="cta" href="#contact">도입/문의하기</a>
+      <span>경찰청 LED 교통신호등 표준규격(R02) 성능시험 적합</span>
+      <span>방송통신기자재 적합등록</span>
+      <span>직접생산확인 증명</span>
+      <span>특허 2건, 디자인 1건 등록</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="about" class="wrap" style="padding:48px 0">
-    <div class="cols">
-      <div class="card">
-        <h2>회사소개</h2>
-        <p class="muted">㈜라이트로드는 도로상에서 빛으로 정보를 제공하는 교통안전시설을 통합하여, 실시간 외부환경에 대응하는 최적 밝기를 구현하는 ‘스마트 조명제어 통합관리 시스템’을 개발합니다.</p>
-        <div style="margin:14px 0;">
-          <span class="tag">스마트 조명제어</span>
-          <span class="tag">교통안전시설</span>
-          <span class="tag">빛공해 저감</span>
-          <span class="tag">에너지 절감</span>
-        </div>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <h3>기업 기본정보</h3>
-          <ul class="list muted">
-            <li><b>회사명</b> ㈜라이트로드</li>
-            <li><b>대표자</b> 양신환</li>
-            <li><b>설립일</b> 2023-12-01</li>
-            <li><b>홈페이지</b> <a class="u" href="https://www.light-road.com" target="_blank" rel="noopener">www.light-road.com</a></li>
-            <li><b>이메일</b> <a class="u" href="mailto:newlight@naver.com">newlight@naver.com</a></li>
-            <li><b>전화</b> 010-9862-3947</li>
-            <li><b>주소</b> 경기도 성남시 분당구 판교로 289번길 20, 경기스타트업캠퍼스 2동 5층</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>주요 제품</h3>
-          <ul class="list">
-            <li>LED 교통신호등</li>
-            <li>바닥신호등</li>
-            <li>가변 전광판</li>
-          </ul>
-          <p class="muted" style="margin-top:10px">조도·기상·교통상황에 따른 표출/밝기 최적화로 안전성과 효율을 동시에 강화합니다.</p>
-        </div>
-      </div>
+<div class="wrap stats">
+  <div class="stat"><b>7.9%</b><strong>조도센서 정확도 f1′</strong><small>경찰청 기준 8% 이내 충족 (센서 단독 6.2%)</small></div>
+  <div class="stat"><b>약 40%</b><strong>야간 소비전력 절감</strong><small>주·야간 2단계 운영 시 주간 대비 (공인시험 결과)</small></div>
+  <div class="stat"><b>0원</b><strong>추가 배선 공사비</strong><small>별도 전원선 포설 시 방향당 최대 약 1,453만 원 소요</small></div>
+  <div class="stat"><b>약 54만 원</b><strong>지주 1개당 순절감</strong><small>10년 기준, 전력비와 LED 수명 연장 효과 반영</small></div>
+</div>
+
+<section id="product" class="alt">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">왜 필요한가</p>
+      <h2>신호등은 지금도 한낮과 한밤에 같은 밝기로 켜져 있습니다</h2>
+      <p class="lead">한낮 기준으로 맞춘 밝기는 야간에 운전자 눈부심과 주거지 빛공해 민원으로 이어집니다. 조광제어의 필요성은 오래전부터 제기되어 왔지만, 저가 센서는 부정확하고 정밀 조도계는 비싸며, 제어기 반파 방식은 다른 안전시설까지 바꿔야 해서 현장에 확산되지 못했습니다.</p>
     </div>
-  </section>
+    <div class="col">
+      <div class="fact"><b>연평균 7,204건</b><span>인공조명 빛공해 민원 (환경부, 제3차 빛공해 방지 종합계획)</span></div>
+      <div class="fact"><b>2025년 8월</b><span>경찰청 LED 교통신호등 표준규격(R02) 개정으로 조도센서 성능기준(f1′ 8% 이내) 신설. CdS 센서 방식은 기준 부적합</span></div>
+      <div class="fact"><b>846,141면</b><span>전국 신호등 설치 면수 (2026 교통안전연차보고서). 주신호등은 모든 교차로의 필수 시설</span></div>
+    </div>
+  </div>
+</section>
 
-  <section id="tech" class="wrap" style="padding:12px 0 36px">
-    <div class="card">
-      <h2>핵심 기술</h2>
-      <div class="kpi">
-        <div class="card">
-          <div style="font-size:14px;color:#9db4c7">조도 인지</div>
-          <div style="font-size:22px;font-weight:700;margin-top:6px">3방향 큐빅형 조도시스템</div>
-          <div class="muted" style="margin-top:8px">다각도 외부조도 측정으로 신뢰도 높은 밝기 제어를 구현</div>
-        </div>
-        <div class="card">
-          <div style="font-size:14px;color:#9db4c7">표출 최적화</div>
-          <div style="font-size:22px;font-weight:700;margin-top:6px">최적 휘도표출 알고리즘</div>
-          <div class="muted" style="margin-top:8px">시간·환경·신호상태에 따른 동적 밝기 최적화</div>
-        </div>
-        <div class="card">
-          <div style="font-size:14px;color:#9db4c7">지식재산</div>
-          <div style="font-size:22px;font-weight:700;margin-top:6px">특허 2건 등록, 1건 출원</div>
-          <div class="muted" style="margin-top:8px">“교차로 상의 스마트 교통신호 표출 시스템 및 그의 제어 방법” 외</div>
-        </div>
+<section id="tech">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">어떻게 작동하나</p>
+      <h2>센서 하나로, 한 방향의 신호등 전체를 같은 밝기로</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>정밀 조도 측정</h3>
+        <p>큐빅형 디퓨저 박스 안의 조도센서가 2방향 이상에서 밝기를 측정해 교차로를 대표하는 조도값을 산출합니다. 태양이나 주변 조명 한 방향에 휘둘리지 않습니다.</p>
+        <div class="photo">조도센서 박스 사진<img src="images/sensor.jpg" alt="큐빅형 디퓨저 조도센서 박스" onerror="this.remove()"></div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3>그룹 동시 제어</h3>
+        <p>대표조도를 기준으로 같은 방향의 적·황·화살·녹 신호등을 한 번에 제어합니다. 신호등마다 센서를 달 때 생기는 밝기 편차가 없습니다.</p>
+        <div class="photo">주간·야간 점등 비교 사진<img src="images/daynight.jpg" alt="주간 밝기와 조광된 야간 밝기의 신호등 비교" onerror="this.remove()"></div>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3>배선 공사 없는 설치</h3>
+        <p>신호등 내부의 Sensor SMPS가 순차 점등 전원을 다이오드 OR-ing 방식으로 결합해 상시 전원을 만듭니다. 기존 제어기와 배선을 그대로 씁니다.</p>
+        <div class="photo">제품 구성 개념도<img src="images/diagram.png" alt="신호제어기, Sensor SMPS, Sensor Box, 신호등 연결 구성도" onerror="this.remove()"></div>
       </div>
     </div>
-  </section>
+    <p class="note">센서부가 고장 나더라도 신호등은 일반 신호등처럼 주간 밝기로 정상 점등됩니다. 현재는 경찰청 규격에 따라 주·야간 2단계로 납품하며, 기준이 세분화되면 핵심기술 변경 없이 다단계 제어로 전환할 수 있습니다.</p>
 
-  <section id="milestones" class="wrap" style="padding:0 0 42px">
-    <div class="grid">
-      <div class="card">
-        <h2>주요 성과</h2>
-        <ul class="list">
-          <li>2025년 경찰청 교통안전시설심의위원회 일부 기술 도입 시행</li>
-          <li>창업진흥원 예비창업패키지 최종선정 및 과업 종료(2023)</li>
-        </ul>
+    <h3 class="sub">기존 방식과 비교</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>구분</th><th>일반 신호등</th><th>반파 적용 신호등</th><th>CdS 센서 신호등</th><th class="us">라이트로드</th></tr></thead>
+        <tbody>
+          <tr><td>조광제어 방식</td><td>없음</td><td>전원 반주기 이용</td><td>개별 센서 감응</td><td class="us">실측 외부조도 기반 자동제어</td></tr>
+          <tr><td>다른 안전시설 수정 없이 사용</td><td>해당 없음</td><td>불가 (수정 필수)</td><td>가능</td><td class="us">가능</td></tr>
+          <tr><td>한 방향 신호등 동시제어</td><td>불가</td><td>가능</td><td>불가 (밝기 불균형)</td><td class="us">가능</td></tr>
+          <tr><td>실시간 대응</td><td>불가</td><td>불가</td><td>가능</td><td class="us">가능</td></tr>
+          <tr><td>센서 정확도 (f1′ 8% 이내)</td><td>해당 없음</td><td>해당 없음</td><td>미충족 (약 20~60%)</td><td class="us">충족 (7.9%)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="proof" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">시험·인증</p>
+      <h2>공인시험과 현장 실증으로 확인했습니다</h2>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>항목</th><th>결과</th><th>기관 · 번호</th></tr></thead>
+        <tbody>
+          <tr><td>경찰청 표준규격(R02) 성능시험: 호환성·환경·내구성·전기·광학·조광제어</td><td class="us">전 항목 적합</td><td class="src">키엘연구원 KIEL2607-F07853~F07858</td></tr>
+          <tr><td>전자파 적합성: 잡음단자전압·잡음전계강도·뢰 임펄스</td><td class="us">적합</td><td class="src">E26KR-2127, KIEL2606-KF07134~KF07139</td></tr>
+          <tr><td>조도센서 상대분광응답도 f1′</td><td class="us">센서+디퓨저 7.9% / 센서 6.2%</td><td class="src">260416AJ65, JICS-703-N260001</td></tr>
+          <tr><td>교차로 그룹 동시제어</td><td class="us">단일 센서로 3색 동시 제어 확인</td><td class="src">도로교통공단 KOROAD-G2026-B21-0001</td></tr>
+          <tr><td>외함 재질: 인장강도·충격강도·하중변형온도·난연성</td><td class="us">62.5 MPa, 29 kJ/m², 93℃, V-0</td><td class="src">CT25-087120K</td></tr>
+          <tr><td>Cut-off 상태 임피던스 (기준 10 kΩ 미만)</td><td class="us">7.2 kΩ</td><td class="src">키엘연구원</td></tr>
+          <tr><td>방송통신기자재 적합등록, 직접생산확인</td><td class="us">보유</td><td class="src">직접생산 제2026-0447-00316호</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top:40px">
+      <div class="col">
+        <h3 style="font-size:21px">현장 실증: 건설기술연구원 SOC 실증센터(연천)</h3>
+        <p class="lead">2024년 7월 25일부터 8월 31일까지 약 35일간 실제 교차로 환경에서 운영했습니다. 측정 조도는 한국천문연구원의 일출·일몰 시각과 일치했고, 맑음·흐림·비 등 기상 조건별로 안정적으로 작동했습니다.</p>
+        <p class="lead">피험자 눈부심 평가(5점: 매우 눈부심, 3점: 적당함)에서 야간에 주간 밝기를 그대로 쓰면 4.1~4.5점, 주간 대비 42% 수준으로 낮추면 3.2점으로 적정하다는 결과를 얻었습니다.</p>
       </div>
-      <div class="card">
-        <h2>적용 분야</h2>
-        <ul class="list">
-          <li>교차로 신호관리 · 보행안전시설</li>
-          <li>스쿨존·차로분리·횡단보도 안내</li>
-          <li>도로 가변전광판, 표지 연계</li>
-        </ul>
-        <p class="muted">ITS/스마트시티, 공공 조달 및 지자체 사업에 최적화</p>
+      <div class="photo" style="flex:1 1 400px;min-height:260px">연천 실증 현장 사진<img src="images/field-test.jpg" alt="연천 SOC 실증센터에서 진행한 주간·야간 피험자 실험" onerror="this.remove()"></div>
+    </div>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">경제성</p>
+      <h2>설치비 9% 추가로, 10년간 설치비의 약 25%를 돌려받습니다</h2>
+      <p class="lead">지주 1개에 차량용 1면 4색 3조, 보행용 1면 2색 1조, 적·녹 숫자형 보행보조장치 1조, 조도센서부 2조를 설치하는 경우의 예상 금액입니다.</p>
+      <p style="font-size:14px;color:var(--muted)">LED 수명 연장은 구동전류 저감에 따른 이론값(약 3.5배) 대신 30%만 보수적으로 반영했습니다.</p>
+    </div>
+    <div class="ledger">
+      <div><span>전체 설치 예상 비용</span><span>2,208,000원</span></div>
+      <div><span>조도센서부 추가 (99,000원 × 2조)</span><span>+198,000원</span></div>
+      <div><span>전력비 절감 (10년)</span><span>−79,200원</span></div>
+      <div><span>LED 수명 연장 이익 (약 3년)</span><span>−660,000원</span></div>
+      <div class="total"><span>지주 1개당 순절감</span><span>약 541,200원</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="buy" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">도입 안내</p>
+      <h2>지자체 담당자를 위한 구매·유지관리 안내</h2>
+    </div>
+    <div class="cards">
+      <div class="card"><h3>구매 방법</h3><p>나라장터 등록: [물품식별번호 기재]<br>혁신제품 지정: [지정번호 기재]</p></div>
+      <div class="card"><h3>설치</h3><p>기존 신호제어기 호환. 설치비는 일반 신호등과 같습니다. 조도센서부는 통상 지주 1개에 차량용·보행용 각 1대를 권장하며, 인공광원이 직접 비치는 곳은 피해 설치합니다.</p></div>
+      <div class="card"><h3>A/S</h3><p>3년 이내 무상. 3~10년은 부품비·출장비 실비만 받고 별도 이윤은 없습니다. 정기점검이나 소모품 비용은 없습니다.</p></div>
+      <div class="card"><h3>시범 설치</h3><p>빛공해 민원이 잦은 교차로를 대상으로 지자체와 함께 시범 운영을 진행합니다. 에너지 절감과 정상 작동, 운전자·보행자 판독성을 함께 평가합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">자료실</p>
+      <h2>내부 검토에 필요한 자료를 바로 받으세요</h2>
+    </div>
+    <div class="docs">
+      <a href="docs/spec.pdf" download>제품 규격서<span>PDF 받기</span></a>
+      <a href="docs/manual.pdf" download>시방서 · 유지관리 지침서<span>PDF 받기</span></a>
+      <a href="docs/certificates.pdf" download>시험성적서 · 인증서 모음<span>PDF 받기</span></a>
+      <a href="docs/brochure.pdf" download>제품 소개서<span>PDF 받기</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="company" class="dark">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">회사소개</p>
+      <h2>교통안전시설 기준을 만들어 온 사람들이 만든 회사</h2>
+      <p class="lead">㈜라이트로드는 도로교통공단 사내벤처 1호로 출발해 2023년 12월 설립했습니다. 스마트 도로교통안전시설을 연구·개발·제조합니다.</p>
+      <div class="people">
+        <span><b>양신환 대표</b>: 교통안전시설 기준·시험 27년, 경찰청 기준·규격 제·개정 참여, KOLAS 기술책임자</span>
+        <span><b>기술이사</b>: 물리학 박사, 정부출연연구기관 광도·센서 분야 30년</span>
       </div>
     </div>
-  </section>
-
-  <section id="products" class="wrap" style="padding:0 0 52px">
-    <div class="card">
-      <h2>제품/솔루션</h2>
-      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
-        <div class="card">
-          <h3>LED 교통신호등</h3>
-          <p class="muted">주·야간/환경 대응 밝기 자동 제어로 시인성 및 안전성 향상</p>
-        </div>
-        <div class="card">
-          <h3>바닥신호등</h3>
-          <p class="muted">보행자 주의 환기 및 교차로 혼잡 구간 안전 강화</p>
-        </div>
-        <div class="card">
-          <h3>가변 전광판</h3>
-          <p class="muted">상황 기반 표출과 에너지 효율을 동시에 고려한 운영</p>
-        </div>
-      </div>
+    <div class="col">
+      <h3 style="font-size:18px">지식재산</h3>
+      <div class="ip"><b>특허 제10-2785102호</b><span>교차로 상의 스마트 교통신호 표출 시스템 및 그의 제어 방법</span></div>
+      <div class="ip"><b>특허 제10-3010374호</b><span>조도 연동형 신호등 일괄 디밍 제어 시스템 및 그 방법</span></div>
+      <div class="ip"><b>디자인 제30-1356488호</b><span>조도센서 케이스</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="contact" class="wrap" style="padding:0 0 70px">
-    <div class="card contact">
-      <h2>문의하기</h2>
-      <p class="muted">도입·협업·시연 요청을 환영합니다. 메시지를 보내주시면 빠르게 회신드리겠습니다.</p>
-      <div class="grid" style="grid-template-columns:1.2fr .8fr;gap:20px;margin-top:12px">
-        <form action="mailto:newlight@naver.com" method="post" enctype="text/plain" class="card" style="background:#121722">
-          <label>이름<br><input required name="name" placeholder="성함" style="width:100%;margin:8px 0 12px;padding:12px;border-radius:10px;border:1px solid #2a3242;background:#0e141e;color:#e6e9ef"/></label>
-          <label>이메일<br><input required type="email" name="email" placeholder="you@example.com" style="width:100%;margin:8px 0 12px;padding:12px;border-radius:10px;border:1px solid #2a3242;background:#0e141e;color:#e6e9ef"/></label>
-          <label>내용<br><textarea required name="message" rows="5" placeholder="문의 내용을 입력해 주세요" style="width:100%;margin:8px 0 14px;padding:12px;border-radius:10px;border:1px solid #2a3242;background:#0e141e;color:#e6e9ef;resize:vertical"></textarea></label>
-          <button type="submit" class="cta" style="border:none;cursor:pointer">메일 보내기</button>
-          <p class="muted" style="font-size:12px;margin-top:10px">※ 메일 프로그램이 열리지 않는 환경이라면 <a class="u" href="mailto:newlight@naver.com">newlight@naver.com</a> 으로 직접 보내주세요.</p>
-        </form>
-        <div class="card" style="background:#121722">
-          <h3>연락처</h3>
-          <ul class="list">
-            <li><b>전화</b> 010-9862-3947</li>
-            <li><b>이메일</b> <a class="u" href="mailto:newlight@naver.com">newlight@naver.com</a></li>
-            <li><b>주소</b> 경기도 성남시 분당구 판교로 289번길 20,<br/>경기스타트업캠퍼스 2동 5층</li>
-            <li><b>홈페이지</b> <a class="u" href="https://www.light-road.com" target="_blank" rel="noopener">www.light-road.com</a></li>
-          </ul>
-        </div>
-      </div>
+<section id="contact">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">문의</p>
+      <h2>시연, 시범 설치, 자료 요청 모두 환영합니다</h2>
+      <p class="lead">전화나 이메일로 연락 주시면 담당자가 바로 회신드립니다.</p>
     </div>
-  </section>
-
-  <footer class="footer">
-    <div class="wrap">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
-        <div>© <span id="y"></span> LightRoad Co., Ltd. All rights reserved.</div>
-        <div class="muted">사업자등록 및 지식재산 관련 문의는 이메일로 연락 바랍니다.</div>
-      </div>
+    <div class="contact">
+      <div><span>전화</span><a href="tel:070-7543-3943">070-7543-3943</a></div>
+      <div><span>팩스</span><span>070-7543-3974</span></div>
+      <div><span>휴대폰</span><a href="tel:010-9862-3947">010-9862-3947</a></div>
+      <div><span>이메일</span><a href="mailto:newlight@naver.com">newlight@naver.com</a></div>
+      <div><span>주소</span><span>(18126) 경기도 오산시 수목원로88번길 35 (가수동) 현대테라타워CMC 지식산업센터 B1301호</span></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>㈜라이트로드 Light-Road Co., Ltd. | 대표 양신환 | 사업자등록번호 456-81-03102</span>
+    <span>© 2026 Light-Road Co., Ltd.</span>
+  </div>
+</footer>
+
 </body>
 </html>
