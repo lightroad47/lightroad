@@ -195,6 +195,17 @@ nav a.lang{border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-
 .lb img{display:block;max-width:100%;max-height:86vh;margin:0 auto;border-radius:6px;background:#fff}
 .lb p{color:#fff;text-align:center;margin-top:10px;font-size:15px}
 .lb button{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:22px;border:0;background:#fff;color:var(--navy);font-size:24px;line-height:1;cursor:pointer}
+.items{margin-top:20px;border-top:1px solid var(--line);padding-top:16px;flex-basis:100%}
+.items summary{cursor:pointer;font-weight:700;color:var(--blue);list-style:none;display:inline-flex;align-items:center;gap:8px}
+.items summary::-webkit-details-marker{display:none}
+.items summary::before{content:"+";display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:11px;border:1px solid var(--blue);font-size:15px;line-height:1}
+.items[open] summary::before{content:"−"}
+.items .tbl{margin-top:14px;max-height:420px;overflow:auto}
+.items table{min-width:520px;font-size:14px}
+.items th{position:sticky;top:0;background:var(--alt)}
+.items th,.items td{padding:9px 14px}
+.items td.id{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.items td.m{white-space:nowrap}
 /* procurement */
 .procure{background:#fff;border-radius:8px;padding:24px 28px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center}
 .procure dl{flex:1 1 520px;margin:0;display:grid;grid-template-columns:140px 1fr;gap:10px 16px;font-size:15px}
@@ -728,15 +739,52 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       <dl>
         <dt>Listed in</dt><dd>Public Procurement Service product catalog (KONEPS)</dd>
         <dt>Category</dt><dd>Public safety equipment › Traffic control equipment › Traffic signals</dd>
-        <dt>Product</dt><dd>LED traffic signal with dimming control</dd>
-        <dt>Item ID</dt><dd>[item ID]</dd>
-        <dt>Models</dt><dd>LROAD-SVR-01, LROAD-SVY-01, LROAD-SVG-01, LROAD-SVA-01, LROAD-SPR-01, LROAD-SPG-01</dd>
+        <dt>Product class</dt><dd>Traffic signals (class no. 4616150401)</dd>
+        <dt>Item IDs</dt><dd>27 items including 26412896 (see list below)</dd>
+        <dt>Models</dt><dd>26 vehicle, warning and pedestrian signals, plus 1 light sensor unit (part)</dd>
         <dt>Manufacturer</dt><dd>Light-Road Co., Ltd. (direct production certificate No. 2026-0447-00385)</dd>
       </dl>
       <div class="go">
         <p>Search the KONEPS catalog by item ID or "Light-Road" for specifications and pricing.</p>
         <a href="https://www.g2b.go.kr" target="_blank" rel="noopener">Go to KONEPS</a>
       </div>
+      <details class="items">
+        <summary>View all 27 listed items</summary>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Item ID</th><th>Model</th><th>Configuration</th></tr></thead>
+            <tbody>
+              <tr><td class="id">26412896</td><td class="m">LROAD-SVR-01</td><td>Vehicle signal (red)</td></tr>
+              <tr><td class="id">26412897</td><td class="m">LROAD-SVY-01</td><td>Vehicle signal (amber)</td></tr>
+              <tr><td class="id">26412898</td><td class="m">LROAD-SVA-01</td><td>Vehicle signal (green arrow)</td></tr>
+              <tr><td class="id">26412899</td><td class="m">LROAD-SVG-01</td><td>Vehicle signal (green)</td></tr>
+              <tr><td class="id">26412888</td><td class="m">LROAD-SVRYA-01</td><td>Vehicle signal (red / amber / green arrow)</td></tr>
+              <tr><td class="id">26412889</td><td class="m">LROAD-SVRYG-01</td><td>Vehicle signal (red / amber / green)</td></tr>
+              <tr><td class="id">26412890</td><td class="m">LROAD-SVRYAG-01</td><td>Vehicle signal (red / amber / green arrow / green)</td></tr>
+              <tr><td class="id">26412894</td><td class="m">LROAD-SVYY-01</td><td>Warning signal (amber / amber)</td></tr>
+              <tr><td class="id">26412895</td><td class="m">LROAD-SVYYY-01</td><td>Warning signal (amber / amber / amber)</td></tr>
+              <tr><td class="id">26411840</td><td class="m">LROAD-SVRR-01</td><td>Warning signal (red / red)</td></tr>
+              <tr><td class="id">26412891</td><td class="m">LROAD-SPR-01</td><td>Pedestrian signal (red)</td></tr>
+              <tr><td class="id">26412892</td><td class="m">LROAD-SPG-01</td><td>Pedestrian signal (green)</td></tr>
+              <tr><td class="id">26412893</td><td class="m">LROAD-SPRG-01</td><td>Pedestrian signal (red / green)</td></tr>
+              <tr><td class="id">26411841</td><td class="m">LROAD-SVR-01(Y)</td><td>Vehicle signal (red)</td></tr>
+              <tr><td class="id">26411842</td><td class="m">LROAD-SVY-01(Y)</td><td>Vehicle signal (amber)</td></tr>
+              <tr><td class="id">26411843</td><td class="m">LROAD-SVA-01(Y)</td><td>Vehicle signal (green arrow)</td></tr>
+              <tr><td class="id">26411844</td><td class="m">LROAD-SVG-01(Y)</td><td>Vehicle signal (green)</td></tr>
+              <tr><td class="id">26411845</td><td class="m">LROAD-SVRYA-01(Y)</td><td>Vehicle signal (red / amber / green arrow)</td></tr>
+              <tr><td class="id">26411846</td><td class="m">LROAD-SVRYG-01(Y)</td><td>Vehicle signal (red / amber / green)</td></tr>
+              <tr><td class="id">26411847</td><td class="m">LROAD-SVRYAG-01(Y)</td><td>Vehicle signal (red / amber / green arrow / green)</td></tr>
+              <tr><td class="id">26411852</td><td class="m">LROAD-SVYY-01(Y)</td><td>Warning signal (amber / amber)</td></tr>
+              <tr><td class="id">26411853</td><td class="m">LROAD-SVYYY-01(Y)</td><td>Warning signal (amber / amber / amber)</td></tr>
+              <tr><td class="id">26411854</td><td class="m">LROAD-SVRR-01(Y)</td><td>Warning signal (red / red)</td></tr>
+              <tr><td class="id">26411848</td><td class="m">LROAD-SPR-01(Y)</td><td>Pedestrian signal (red)</td></tr>
+              <tr><td class="id">26411849</td><td class="m">LROAD-SPG-01(Y)</td><td>Pedestrian signal (green)</td></tr>
+              <tr><td class="id">26411850</td><td class="m">LROAD-SPRG-01(Y)</td><td>Pedestrian signal (red / green)</td></tr>
+              <tr><td class="id">26412688</td><td class="m">LROAD-SLC-01</td><td>Part: light sensor unit</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
     </div>
     <div class="cards">
       <div class="card"><h3>Purchasing</h3><p>Search KONEPS by item ID or "Light-Road" to purchase. Innovative Product designation: [designation no.]</p></div>
