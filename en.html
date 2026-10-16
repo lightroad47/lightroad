@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light-Road | Self-Dimming LED Traffic Signal with Precision Light Sensor</title>
+<meta name="description" content="Light-Road Co., Ltd., the first in-house venture of the Korea Road Traffic Authority. An LED traffic signal that measures intersection brightness and dims itself. Road safety, less light pollution, energy saving.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Light-Road | Self-Dimming LED Traffic Signal">
+<meta property="og:description" content="Never glaring at night, always clear by day. Road Safety · Less Light Pollution · Energy Saving.">
+<meta property="og:url" content="https://www.light-road.com/en.html">
+<link rel="alternate" hreflang="ko" href="https://www.light-road.com/">
+<link rel="alternate" hreflang="en" href="https://www.light-road.com/en.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1A26; --muted:#4A5866; --line:#D9E0E7; --alt:#F3F6F9;
+  --navy:#0B1B2B; --navy-line:#23384D; --blue:#0A63BF; --blue-dark:#084C93;
+  --sky:#9CC6F0; --soft:#D3DEE9;
+  --red:#E1251B; --yellow:#F5C400; --green:#1E9E4A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:'IBM Plex Sans','IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--ink);background:#fff;line-height:1.6;word-break:normal;overflow-wrap:break-word}
+a{color:var(--blue)} a:hover{color:var(--blue-dark)}
+a:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+.alt{background:var(--alt)}
+.dark{background:var(--navy);color:#fff}
+.kicker{font-size:14px;font-weight:700;color:var(--blue)}
+.dark .kicker{color:var(--sky)}
+h2{font-size:34px;line-height:1.3;letter-spacing:-.5px}
+.lead{font-size:17px;color:var(--muted)}
+.dark .lead{color:var(--soft)}
+.head{display:flex;flex-direction:column;gap:12px;max-width:760px;margin-bottom:40px}
+.row{display:flex;flex-wrap:wrap;gap:48px}
+.col{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:16px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.logo{display:block;text-decoration:none;line-height:0}
+.logo img{display:block;height:51px;width:auto}
+.logo span.word{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-style:italic;font-size:20px;padding:4px 18px;transform:skewX(-12deg)}
+.stripe{display:flex;height:4px;width:132px}
+.stripe i{flex:1}
+.stripe i:nth-child(1){background:var(--red)} .stripe i:nth-child(2){background:var(--yellow)} .stripe i:nth-child(3){background:var(--green)}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px;font-size:15px;font-weight:500}
+nav a{color:var(--ink);text-decoration:none;padding:10px 0}
+nav a:hover{color:var(--blue)}
+nav a.cta{color:#fff;background:var(--blue);padding:10px 18px;border-radius:6px}
+nav a.cta:hover{background:var(--blue-dark);color:#fff}
+
+/* hero */
+.hero{padding:0}
+.hero .inner{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:88px;padding-bottom:72px}
+.hero .text{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.hero h1{font-size:52px;line-height:1.2;letter-spacing:-1px}
+.hero p.sub{font-size:19px;color:var(--soft);max-width:560px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:14px 24px;border-radius:6px}
+.btn.white{background:#fff;color:var(--navy)}
+.btn.white:hover{background:var(--soft);color:var(--navy)}
+.btn.ghost{border:1px solid #6E8396;color:#fff;font-weight:500}
+.btn.ghost:hover{border-color:#fff;color:#fff}
+.badges{border-top:1px solid var(--navy-line)}
+.badges .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:20px;padding-bottom:20px;font-size:14px;color:#C5D3E0}
+
+/* photo slots: upload the named image and it appears; until then the label shows */
+.photo{position:relative;overflow:hidden;border:1px dashed #B7C3CF;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;color:#6A7886;font-size:14px;text-align:center;padding:24px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+.hero .photo img{background:var(--navy)}
+.photo.filled{border-style:solid;border-color:var(--line)}
+.dark .photo,.hero .photo{background:transparent;border-color:#4D6175;color:#8FA3B6}
+.hero .photo{flex:1 1 400px;min-width:0;height:360px}
+.hero .photo.hero-fig{flex:1 1 520px;height:auto;aspect-ratio:1396/1046;padding:0;border:0;border-radius:10px;background:#fff}
+.hero .photo.hero-fig img{background:#fff}
+
+/* numbers */
+.stats{display:flex;flex-wrap:wrap;gap:24px;padding-top:64px;padding-bottom:64px}
+.stat{flex:1 1 240px;display:flex;flex-direction:column;gap:6px;padding:24px;background:var(--alt);border-radius:8px}
+.stat b{font-size:40px;color:var(--blue);line-height:1.2}
+.stat strong{font-weight:700}
+.stat small{font-size:14px;color:var(--muted)}
+
+.fact{background:#fff;border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:4px}
+.fact b{font-size:28px}
+.fact span{font-size:15px;color:var(--muted)}
+
+/* steps */
+.steps{display:flex;flex-wrap:wrap;gap:24px}
+.step{flex:1 1 300px;min-width:0;border:1px solid var(--line);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.step .n{width:40px;height:40px;border-radius:20px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.step h3{font-size:21px}
+.step p{color:var(--muted)}
+.step .photo{height:220px;padding:12px}
+.note{background:var(--alt);border-radius:8px;padding:20px 24px;font-size:15px;color:#33424F;margin-top:24px}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+table{width:100%;min-width:760px;border-collapse:collapse;font-size:15px}
+th,td{padding:14px 16px;text-align:left;vertical-align:top}
+thead tr{background:var(--alt)}
+tbody tr{border-top:1px solid var(--line)}
+th.us{background:var(--blue);color:#fff}
+td.us{font-weight:700}
+td.src{color:var(--muted)}
+h3.sub{font-size:21px;margin:40px 0 12px}
+
+/* cost */
+.ledger{flex:1 1 420px;min-width:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ledger div{display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ledger div span:last-child{font-weight:700;white-space:nowrap}
+.ledger div.total{background:var(--navy);color:#fff;border-bottom:0;padding:18px 20px}
+.ledger div.total span{font-weight:700}
+.ledger div.total span:last-child{font-size:20px}
+
+.energy{margin-top:56px}
+.energy h3{font-size:21px;margin-bottom:16px}
+.energy figure{margin:0;border:1px solid var(--line);border-radius:8px;padding:24px;background:#fff}
+.energy img{display:block;width:100%;height:auto}
+.energy figcaption{margin-top:16px;font-size:14px;color:var(--muted)}
+.trio{display:flex;flex-wrap:wrap;gap:20px;margin-top:24px}
+.trio > div{flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.trio p{font-size:14px;color:var(--muted)}
+.trio b{display:block;color:var(--ink);font-size:15px}
+/* buy */
+.cards{display:flex;flex-wrap:wrap;gap:24px}
+.card{flex:1 1 260px;min-width:0;background:#fff;border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:18px}
+.card p{color:var(--muted);font-size:15px}
+
+/* docs */
+.docs{display:flex;flex-wrap:wrap;gap:16px}
+.docs a{flex:1 1 260px;display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:20px 22px;text-decoration:none;color:var(--ink);font-weight:500}
+.docs a span{color:var(--blue);font-size:14px;white-space:nowrap}
+.docs a:hover{border-color:var(--blue)}
+
+/* company */
+.people{display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--soft)}
+.people b{color:#fff}
+.ip{border:1px solid var(--navy-line);border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.ip span{font-size:15px;color:#C5D3E0}
+
+/* contact */
+.contact{flex:1 1 420px;min-width:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:16px}
+.contact div{display:flex;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.contact div:last-child{border-bottom:0}
+.contact div > span:first-child{width:104px;flex-shrink:0;color:var(--muted)}
+.contact a{text-decoration:none;font-weight:700}
+
+/* slogan */
+.slogan{display:flex;flex-direction:column;gap:10px;border-left:3px solid var(--sky);padding:4px 0 4px 16px}
+.slogan p{font-size:16px;color:var(--soft)}
+.slogan ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:17px;font-weight:700;color:#fff}
+.slogan li{display:flex;align-items:center;gap:8px}
+.slogan li::before{content:"";width:12px;height:12px;border-radius:6px;flex-shrink:0}
+.slogan li.r::before{background:var(--red)} .slogan li.y::before{background:var(--yellow)} .slogan li.g::before{background:var(--green)}
+.logo-wrap{display:flex;flex-direction:column;gap:4px}
+.logo-wrap small{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:-.2px}
+nav a.lang{border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:13px;font-weight:700}
+
+/* video */
+.video{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video button{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:#000 center/cover no-repeat}
+.video button::after{content:"";position:absolute;left:50%;top:50%;width:76px;height:54px;margin:-27px 0 0 -38px;border-radius:14px;background:#E1251B url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/30px no-repeat;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.video button:hover::after{background-color:#C11E15}
+.video button:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.vlink{margin-top:14px;font-size:14px;color:var(--soft)}
+.vlink a{color:var(--sky)}
+
+footer{background:var(--alt);border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:28px;padding-bottom:28px;font-size:13px;color:var(--muted)}
+
+@media (max-width:720px){
+  section{padding:56px 0}
+  .hero .inner{padding-top:48px;padding-bottom:48px}
+  .hero h1{font-size:36px}
+  .hero .photo{height:240px}
+  h2{font-size:27px}
+  header{position:static}
+  nav{gap:0 16px;font-size:14px}
+  .stat b{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="logo-wrap">
+      <a href="#top" class="logo" aria-label="Light-Road home">
+        <img src="images/logo.png" alt="Light-Road" width="140" height="51">
+      </a>
+      <small>R&amp;D and Manufacturing of Smart Road Traffic Safety Facilities</small>
+    </div>
+    <nav aria-label="Main menu">
+      <a href="#product">Product</a>
+      <a href="#tech">Technology</a>
+      <a href="#video">Video</a>
+      <a href="#proof">Testing</a>
+      <a href="#cost">Economics</a>
+      <a href="#buy">Adoption</a>
+      <a href="#docs">Downloads</a>
+      <a href="#company">Company</a>
+      <a href="#contact" class="cta">Contact</a>
+      <a href="index.html" class="lang" hreflang="ko" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="top" class="hero dark">
+  <div class="wrap inner">
+    <div class="text">
+      <p class="kicker">Founded as the First In-House Venture of the Korea Road Traffic Authority</p>
+      <h1>Never glaring at night.<br>Always clear by day.</h1>
+      <p class="sub">An LED traffic signal with automatic luminance control based on a precision light sensor. It measures the actual brightness at the intersection and adjusts signal brightness on its own. Installs on existing signal controllers with no additional wiring.</p>
+      <div class="slogan">
+        <p>With Precision Light-Sensing Dimming Technology</p>
+        <ul><li class="r">Road Safety</li><li class="y">Less Light Pollution</li><li class="g">Energy Saving</li></ul>
+      </div>
+      <div class="btns">
+        <a href="#docs" class="btn white">Get product documents</a>
+        <a href="#contact" class="btn ghost">Request a demo</a>
+      </div>
+    </div>
+    <div class="photo hero-fig">Product concept diagram<img src="images/hero-diagram.jpg" alt="Concept diagram: sensor unit A controls vehicle signal group A, sensor unit B controls pedestrian signal group B; a single sensor can also control both groups" onerror="this.remove()"></div>
+  </div>
+  <div class="badges">
+    <div class="wrap">
+      <span>Passed Korean National Police Agency LED signal standard (R02) performance tests</span>
+      <span>Korean broadcasting &amp; communication equipment conformity registration</span>
+      <span>Certified direct production</span>
+      <span>2 patents, 1 design registered</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap stats">
+  <div class="stat"><b>7.9%</b><strong>Light sensor accuracy f1′</strong><small>Meets the Police Agency limit of 8% (sensor alone 6.2%)</small></div>
+  <div class="stat"><b>~40%</b><strong>Lower power at night</strong><small>Versus daytime, in two-level day/night operation (accredited test result)</small></div>
+  <div class="stat"><b>KRW 0</b><strong>Additional wiring cost</strong><small>Running a separate power line costs up to about KRW 14.53 million per approach</small></div>
+  <div class="stat"><b>~KRW 540k</b><strong>Net saving per pole</strong><small>Over 10 years, including power savings and longer LED life</small></div>
+</div>
+
+<section id="product" class="alt">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">Why it matters</p>
+      <h2>Traffic signals still shine just as brightly at midnight as at noon</h2>
+      <p class="lead">Brightness set for full daylight causes driver glare at night and light-pollution complaints from nearby homes. The need for dimming has long been recognized, but cheap sensors are inaccurate, precision light meters are expensive, and controller-based half-wave dimming requires changes to other safety equipment, so none of these approaches spread in the field.</p>
+    </div>
+    <div class="col">
+      <div class="fact"><b>7,204 per year</b><span>Average artificial light pollution complaints in Korea (Ministry of Environment, 3rd Light Pollution Prevention Plan)</span></div>
+      <div class="fact"><b>August 2025</b><span>The Police Agency LED signal standard (R02) added a light sensor performance limit (f1′ within 8%). CdS sensor designs do not meet it.</span></div>
+      <div class="fact"><b>846,141 faces</b><span>Traffic signal faces installed nationwide (2026 Annual Traffic Safety Report). Main signals are required at every intersection.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">How it works</p>
+      <h2>One sensor sets every signal on an approach to the same brightness</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>Precision light measurement</h3>
+        <p>A light sensor inside a cubic diffuser box measures brightness from two or more directions and derives one representative value for the intersection. Sun or a single nearby light source cannot skew it.</p>
+        <div class="photo">Light sensor box<img src="images/sensor.jpg" alt="Cubic diffuser light sensor box" onerror="this.remove()"></div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3>Group control</h3>
+        <p>The red, amber, arrow and green signals on the same approach are dimmed together from that representative value, so there is none of the uneven brightness that comes from fitting a sensor to each signal.</p>
+        <div class="photo">Day and night comparison<img src="images/daynight.jpg" alt="Signal at daytime brightness compared with dimmed night brightness" onerror="this.remove()"></div>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3>No new wiring</h3>
+        <p>A Sensor SMPS inside the signal combines the sequentially switched lamp supplies through diode OR-ing to create continuous power. Existing controllers and cabling stay as they are.</p>
+        <div class="photo">System configuration<img src="images/diagram.png" alt="Configuration: signal controller, Sensor SMPS, Sensor Box and signals" onerror="this.remove()"></div>
+      </div>
+    </div>
+    <p class="note">If the sensor unit fails, the signal simply lights at normal daytime brightness. Units are currently supplied with two-level day/night control under the Police Agency standard; if the standard adds finer levels, they can switch to multi-level control without changing the core technology.</p>
+
+    <h3 class="sub">Compared with existing approaches</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Item</th><th>Standard signal</th><th>Half-wave dimming</th><th>CdS sensor signal</th><th class="us">Light-Road</th></tr></thead>
+        <tbody>
+          <tr><td>Dimming method</td><td>None</td><td>Uses half of the supply cycle</td><td>Individual sensor per signal</td><td class="us">Automatic, from measured ambient light</td></tr>
+          <tr><td>Works without modifying other equipment</td><td>N/A</td><td>No (modification required)</td><td>Yes</td><td class="us">Yes</td></tr>
+          <tr><td>Uniform control of one approach</td><td>No</td><td>Yes</td><td>No (uneven brightness)</td><td class="us">Yes</td></tr>
+          <tr><td>Real-time response</td><td>No</td><td>No</td><td>Yes</td><td class="us">Yes</td></tr>
+          <tr><td>Sensor accuracy (f1′ within 8%)</td><td>N/A</td><td>N/A</td><td>Fails (about 20–60%)</td><td class="us">Meets (7.9%)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="video" class="dark">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Watch</p>
+      <h2>Light-Road product video</h2>
+      <p class="lead">See the precision light-sensing, self-dimming LED traffic signal on video.</p>
+    </div>
+    <div class="video">
+      <button type="button" id="yt-play" data-id="6m-W9bCvQbQ" aria-label="Play Light-Road product video" style="background-image:url('https://i.ytimg.com/vi/6m-W9bCvQbQ/hqdefault.jpg')"></button>
+    </div>
+    <p class="vlink">If the video does not play, <a href="https://youtu.be/6m-W9bCvQbQ" target="_blank" rel="noopener">watch it on YouTube</a>.</p>
+  </div>
+</section>
+
+<section id="proof" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Testing &amp; certification</p>
+      <h2>Verified by accredited labs and field trials</h2>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Item</th><th>Result</th><th>Lab · Report no.</th></tr></thead>
+        <tbody>
+          <tr><td>Police Agency standard (R02): compatibility, environment, durability, electrical, optical, dimming</td><td class="us">Pass on all items</td><td class="src">KIEL KIEL2607-F07853–F07858</td></tr>
+          <tr><td>EMC: conducted noise, radiated noise, lightning impulse</td><td class="us">Pass</td><td class="src">E26KR-2127, KIEL2606-KF07134–KF07139</td></tr>
+          <tr><td>Light sensor spectral mismatch f1′</td><td class="us">Sensor + diffuser 7.9% / sensor 6.2%</td><td class="src">260416AJ65, JICS-703-N260001</td></tr>
+          <tr><td>Intersection group control</td><td class="us">Three colors controlled by one sensor</td><td class="src">Korea Road Traffic Authority KOROAD-G2026-B21-0001</td></tr>
+          <tr><td>Housing: tensile strength, impact strength, heat deflection, flammability</td><td class="us">62.5 MPa, 29 kJ/m², 93 °C, V-0</td><td class="src">CT25-087120K</td></tr>
+          <tr><td>Cut-off impedance (limit below 10 kΩ)</td><td class="us">7.2 kΩ</td><td class="src">KIEL</td></tr>
+          <tr><td>Equipment conformity registration, direct production certificate</td><td class="us">Held</td><td class="src">Direct production No. 2026-0447-00316</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top:40px">
+      <div class="col">
+        <h3 style="font-size:21px">Field trial: KICT SOC Demonstration Center, Yeoncheon</h3>
+        <p class="lead">Operated in a real intersection environment for about 35 days, from July 25 to August 31, 2024. Measured light levels matched sunrise and sunset times from the Korea Astronomy and Space Science Institute, and the system ran reliably in clear, cloudy and rainy weather.</p>
+        <p class="lead">In subject glare ratings (5 = very glaring, 3 = appropriate), daytime brightness at night scored 4.1–4.5, while dimming to 42% of daytime brightness scored 3.2, rated appropriate.</p>
+      </div>
+      <div class="photo" style="flex:1 1 400px;min-height:260px">Field trial photo<img src="images/field-test.jpg" alt="Day and night subject tests at the Yeoncheon SOC Demonstration Center" onerror="this.remove()"></div>
+    </div>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">Economics</p>
+      <h2>Add 9% to installation cost, recover about 25% of it over 10 years</h2>
+      <p class="lead">Estimate for one pole with three 4-color vehicle signals, one 2-color pedestrian signal, one red/green countdown pedestrian unit and two light sensor units.</p>
+      <p style="font-size:14px;color:var(--muted)">LED life extension is counted conservatively at 30%, rather than the theoretical ~3.5× from lower drive current.</p>
+    </div>
+    <div class="ledger">
+      <div><span>Total installation estimate</span><span>KRW 2,208,000</span></div>
+      <div><span>Light sensor units (KRW 99,000 × 2)</span><span>+KRW 198,000</span></div>
+      <div><span>Power savings (10 years)</span><span>−KRW 79,200</span></div>
+      <div><span>LED life extension (~3 years)</span><span>−KRW 660,000</span></div>
+      <div class="total"><span>Net saving per pole</span><span>~KRW 541,200</span></div>
+    </div>
+  </div>
+  <div class="wrap energy">
+    <h3>Energy use by control method</h3>
+    <figure>
+      <img src="images/energy-chart.jpg" alt="Energy use concept: no dimming stays at 100% day and night; two-level control drops to about 50% at night; real-time control falls gradually with ambient light" loading="lazy">
+      <div class="trio">
+        <div><img src="images/energy-none.jpg" alt="No dimming: 100% energy use day and night" loading="lazy"><p><b>No dimming</b>Same brightness and power day and night.</p></div>
+        <div><img src="images/energy-2step.jpg" alt="Two-level: night energy use halved" loading="lazy"><p><b>Two-level day/night</b>Current supply mode. Saves energy by dimming at night.</p></div>
+        <div><img src="images/energy-realtime.jpg" alt="Real-time: energy use falls gradually with ambient light" loading="lazy"><p><b>Real-time control</b>Available on the same hardware once the standard adds finer levels.</p></div>
+      </div>
+      <figcaption>Concept diagram. Products are currently supplied with two-level day/night control under the Police Agency standard. Korea Road Traffic Authority measurements showed power consumption, relative to 40,000 lx ambient, of 55.7% at 4,000 lx and 42.5% at 400 lx.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="buy" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Adoption</p>
+      <h2>Purchasing and maintenance for public agencies</h2>
+    </div>
+    <div class="cards">
+      <div class="card"><h3>Purchasing</h3><p>Korea ON-line E-Procurement System (KONEPS): [item ID]<br>Innovative Product designation: [designation no.]</p></div>
+      <div class="card"><h3>Installation</h3><p>Compatible with existing signal controllers; installation cost is the same as a standard signal. One sensor unit each for vehicle and pedestrian signals per pole is typical. Avoid spots lit directly by artificial light.</p></div>
+      <div class="card"><h3>After-sales service</h3><p>Free for 3 years. From years 3 to 10, only parts and travel at cost, with no margin. No routine inspection or consumable costs.</p></div>
+      <div class="card"><h3>Pilot installation</h3><p>We run pilots with local governments at intersections with frequent light-pollution complaints, evaluating energy savings, correct operation and legibility for drivers and pedestrians.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Downloads</p>
+      <h2>Documents for your internal review</h2>
+      <p class="lead">Documents are currently provided in Korean. Contact us for English materials.</p>
+    </div>
+    <div class="docs">
+      <a href="docs/spec.pdf" download>Product specification<span>PDF (Korean)</span></a>
+      <a href="docs/manual.pdf" download>Installation &amp; maintenance guide<span>PDF (Korean)</span></a>
+      <a href="docs/certificates.pdf" download>Test reports &amp; certificates<span>PDF (Korean)</span></a>
+      <a href="docs/brochure.pdf" download>Product brochure<span>PDF (Korean)</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="company" class="dark">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">Company</p>
+      <h2>Built by the people who wrote the traffic safety standards</h2>
+      <p class="lead">Light-Road Co., Ltd. began as the first in-house venture of the Korea Road Traffic Authority and was incorporated in December 2023. We research, develop and manufacture smart road traffic safety facilities, using precision light-sensing dimming technology for road safety, less light pollution and energy saving.</p>
+      <div class="people">
+        <span><b>Shinhwan Yang, CEO</b>: 27 years in traffic safety facility standards and testing; contributed to National Police Agency standards; KOLAS technical manager</span>
+        <span><b>Technical Director</b>: PhD in physics; 30 years in photometry and sensors at a government research institute</span>
+      </div>
+    </div>
+    <div class="col">
+      <h3 style="font-size:18px">Intellectual property</h3>
+      <div class="ip"><b>Korean Patent No. 10-2785102</b><span>Smart traffic signal display system at intersections and control method</span></div>
+      <div class="ip"><b>Korean Patent No. 10-3010374</b><span>Illuminance-linked group dimming control system for traffic signals and method</span></div>
+      <div class="ip"><b>Korean Design No. 30-1356488</b><span>Light sensor case</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap row">
+    <div class="col">
+      <p class="kicker">Contact</p>
+      <h2>Demos, pilots and document requests are all welcome</h2>
+      <p class="lead">Call or email us and we will reply promptly.</p>
+    </div>
+    <div class="contact">
+      <div><span>Tel</span><a href="tel:+82-70-7543-3943">+82-70-7543-3943</a></div>
+      <div><span>Fax</span><span>+82-70-7543-3974</span></div>
+      <div><span>Mobile</span><a href="tel:+82-10-9862-3947">+82-10-9862-3947</a></div>
+      <div><span>Email</span><a href="mailto:lightroad47@gmail.com">lightroad47@gmail.com</a></div>
+      <div><span>HQ &amp; Factory</span><span>Unit F1301B, 13F, Hyundai Terra Tower CMC, 35, Sumogwon-ro 88beon-gil, Osan-si, Gyeonggi-do 18126, Republic of Korea</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Light-Road Co., Ltd. | CEO Shinhwan Yang | Business Registration No. 456-81-03102</span>
+    <span>© 2026 Light-Road Co., Ltd.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('yt-play'); if(!b) return;
+  var id=b.getAttribute('data-id');
+  b.addEventListener('click',function(){
+    if(location.protocol==='file:'){ window.open('https://youtu.be/'+id,'_blank','noopener'); return; }
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+    f.title=b.getAttribute('aria-label');
+    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy='strict-origin-when-cross-origin';
+    f.allowFullscreen=true;
+    b.replaceWith(f);
+  });
+})();
+</script>
+</body>
+</html>

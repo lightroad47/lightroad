@@ -9,6 +9,8 @@
 <meta property="og:title" content="라이트로드 | 정밀 조도센서 기반 자동 휘도제어 LED 교통신호등">
 <meta property="og:description" content="밤에는 눈부시지 않게, 낮에는 또렷하게. 경찰청 R02 성능시험 적합, 기존 제어기 그대로 설치.">
 <meta property="og:url" content="https://www.light-road.com/">
+<link rel="alternate" hreflang="ko" href="https://www.light-road.com/">
+<link rel="alternate" hreflang="en" href="https://www.light-road.com/en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -149,8 +151,29 @@ h3.sub{font-size:21px;margin:40px 0 12px}
 .contact{flex:1 1 420px;min-width:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:16px}
 .contact div{display:flex;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
 .contact div:last-child{border-bottom:0}
-.contact div > span:first-child{width:72px;flex-shrink:0;color:var(--muted)}
+.contact div > span:first-child{width:104px;flex-shrink:0;color:var(--muted)}
 .contact a{text-decoration:none;font-weight:700}
+
+/* slogan */
+.slogan{display:flex;flex-direction:column;gap:10px;border-left:3px solid var(--sky);padding:4px 0 4px 16px}
+.slogan p{font-size:16px;color:var(--soft)}
+.slogan ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:17px;font-weight:700;color:#fff}
+.slogan li{display:flex;align-items:center;gap:8px}
+.slogan li::before{content:"";width:12px;height:12px;border-radius:6px;flex-shrink:0}
+.slogan li.r::before{background:var(--red)} .slogan li.y::before{background:var(--yellow)} .slogan li.g::before{background:var(--green)}
+.logo-wrap{display:flex;flex-direction:column;gap:4px}
+.logo-wrap small{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:-.2px}
+nav a.lang{border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:13px;font-weight:700}
+
+/* video */
+.video{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video button{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:#000 center/cover no-repeat}
+.video button::after{content:"";position:absolute;left:50%;top:50%;width:76px;height:54px;margin:-27px 0 0 -38px;border-radius:14px;background:#E1251B url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/30px no-repeat;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.video button:hover::after{background-color:#C11E15}
+.video button:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.vlink{margin-top:14px;font-size:14px;color:var(--soft)}
+.vlink a{color:var(--sky)}
 
 footer{background:var(--alt);border-top:1px solid var(--line)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:28px;padding-bottom:28px;font-size:13px;color:var(--muted)}
@@ -171,18 +194,23 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
 
 <header>
   <div class="wrap bar">
-    <a href="#top" class="logo" aria-label="라이트로드 처음으로">
-      <img src="images/logo.png" alt="Light-Road 라이트로드" width="140" height="51">
-    </a>
+    <div class="logo-wrap">
+      <a href="#top" class="logo" aria-label="라이트로드 처음으로">
+        <img src="images/logo.png" alt="Light-Road 라이트로드" width="140" height="51">
+      </a>
+      <small>스마트 도로교통안전시설 연구·개발·제조</small>
+    </div>
     <nav aria-label="주 메뉴">
       <a href="#product">제품</a>
       <a href="#tech">핵심기술</a>
+      <a href="#video">영상</a>
       <a href="#proof">시험·인증</a>
       <a href="#cost">경제성</a>
       <a href="#buy">도입 안내</a>
       <a href="#docs">자료실</a>
       <a href="#company">회사소개</a>
       <a href="#contact" class="cta">도입 문의</a>
+      <a href="en.html" class="lang" hreflang="en" lang="en">EN</a>
     </nav>
   </div>
 </header>
@@ -192,9 +220,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
 <section id="top" class="hero dark">
   <div class="wrap inner">
     <div class="text">
-      <p class="kicker">도로교통공단 사내벤처 1호 기업</p>
+      <p class="kicker">한국도로교통공단 사내벤처 1호 창업 기업</p>
       <h1>밤에는 눈부시지 않게,<br>낮에는 또렷하게.</h1>
       <p class="sub">정밀 조도센서 기반 자동 휘도제어 LED 교통신호등. 교차로의 실제 밝기를 측정해 신호등 밝기를 스스로 맞춥니다. 기존 신호제어기 그대로, 추가 배선 공사 없이 설치합니다.</p>
+      <div class="slogan">
+        <p>정밀 조도센서 기반 조광제어 기술로</p>
+        <ul><li class="r">교통안전 향상</li><li class="y">빛공해 감소</li><li class="g">에너지 절약</li></ul>
+      </div>
       <div class="btns">
         <a href="#docs" class="btn white">제품 자료 받기</a>
         <a href="#contact" class="btn ghost">시연·도입 문의</a>
@@ -275,6 +307,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
         </tbody>
       </table>
     </div>
+  </div>
+</section>
+
+<section id="video" class="dark">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">영상으로 보기</p>
+      <h2>라이트로드 제품 소개 영상</h2>
+      <p class="lead">정밀 조도센서 기반 자동 휘도제어 LED 교통신호등을 영상으로 만나보세요.</p>
+    </div>
+    <div class="video">
+      <button type="button" id="yt-play" data-id="6m-W9bCvQbQ" aria-label="라이트로드 제품 소개 영상 재생" style="background-image:url('https://i.ytimg.com/vi/6m-W9bCvQbQ/hqdefault.jpg')"></button>
+    </div>
+    <p class="vlink">영상이 재생되지 않으면 <a href="https://youtu.be/6m-W9bCvQbQ" target="_blank" rel="noopener">유튜브에서 보기</a></p>
   </div>
 </section>
 
@@ -374,7 +420,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
     <div class="col">
       <p class="kicker">회사소개</p>
       <h2>교통안전시설 기준을 만들어 온 사람들이 만든 회사</h2>
-      <p class="lead">㈜라이트로드는 도로교통공단 사내벤처 1호로 출발해 2023년 12월 설립했습니다. 스마트 도로교통안전시설을 연구·개발·제조합니다.</p>
+      <p class="lead">㈜라이트로드는 도로교통공단 사내벤처 1호로 출발해 2023년 12월 설립했습니다. 스마트 도로교통안전시설을 연구·개발·제조하며, 정밀 조도센서 기반 조광제어 기술로 교통안전 향상, 빛공해 감소, 에너지 절약을 함께 이룹니다.</p>
       <div class="people">
         <span><b>양신환 대표</b>: 교통안전시설 기준·시험 27년, 경찰청 기준·규격 제·개정 참여, KOLAS 기술책임자</span>
         <span><b>기술이사</b>: 물리학 박사, 정부출연연구기관 광도·센서 분야 30년</span>
@@ -400,8 +446,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       <div><span>전화</span><a href="tel:070-7543-3943">070-7543-3943</a></div>
       <div><span>팩스</span><span>070-7543-3974</span></div>
       <div><span>휴대폰</span><a href="tel:010-9862-3947">010-9862-3947</a></div>
-      <div><span>이메일</span><a href="mailto:newlight@naver.com">newlight@naver.com</a></div>
-      <div><span>주소</span><span>(18126) 경기도 오산시 수목원로88번길 35 (가수동) 현대테라타워CMC 지식산업센터 B1301호</span></div>
+      <div><span>이메일</span><a href="mailto:lightroad47@gmail.com">lightroad47@gmail.com</a></div>
+      <div><span>본사·공장</span><span>(18126) 경기도 오산시 수목원로88번길 35, 지식산업센터동 13층 F1301B호 (가수동, 현대테라타워CMC)</span></div>
     </div>
   </div>
 </section>
@@ -415,5 +461,21 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
   </div>
 </footer>
 
+<script>
+(function(){
+  var b=document.getElementById('yt-play'); if(!b) return;
+  var id=b.getAttribute('data-id');
+  b.addEventListener('click',function(){
+    if(location.protocol==='file:'){ window.open('https://youtu.be/'+id,'_blank','noopener'); return; }
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+    f.title=b.getAttribute('aria-label');
+    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy='strict-origin-when-cross-origin';
+    f.allowFullscreen=true;
+    b.replaceWith(f);
+  });
+})();
+</script>
 </body>
 </html>
