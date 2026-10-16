@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라이트로드 디밍 시뮬레이션 (미리보기)</title>
+<style>
+  body{margin:0;padding:32px 16px;background:#f3f5f8;font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  .wrap{max-width:960px;margin:0 auto}
+  .wrap h2{font-size:15px;color:#667;margin:32px 0 10px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h2>한국어 (index.html 용)</h2>
+
+<!-- ===== 라이트로드 디밍 시뮬레이션 시작 : 여기부터 복사 ===== -->
+<div class="lr-sim" data-lang="ko">
+  <div class="lr-sim__stage">
+    <svg class="lr-sim__svg" viewBox="0 0 960 520" role="img" aria-label="조도센서 기반 자동 휘도제어 LED 신호등 시뮬레이션">
+      <defs>
+        <linearGradient id="lrs-day" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f9fe0"/><stop offset="1" stop-color="#cfeafc"/></linearGradient>
+        <linearGradient id="lrs-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030817"/><stop offset="1" stop-color="#18284a"/></linearGradient>
+        <radialGradient id="lrs-sun"><stop offset="0" stop-color="#fffbe0"/><stop offset=".45" stop-color="#ffe066"/><stop offset=".55" stop-color="#ffd23f" stop-opacity=".55"/><stop offset="1" stop-color="#ffd23f" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-h-red"><stop offset="0" stop-color="#ff4b3e" stop-opacity=".95"/><stop offset=".3" stop-color="#ff3b30" stop-opacity=".45"/><stop offset="1" stop-color="#ff3b30" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-h-amber"><stop offset="0" stop-color="#ffc233" stop-opacity=".95"/><stop offset=".3" stop-color="#ffb000" stop-opacity=".45"/><stop offset="1" stop-color="#ffb000" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-h-green"><stop offset="0" stop-color="#3dffa0" stop-opacity=".95"/><stop offset=".3" stop-color="#14e07a" stop-opacity=".45"/><stop offset="1" stop-color="#14e07a" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-spill"><stop offset="0" stop-color="#ff7a59" stop-opacity=".55"/><stop offset="1" stop-color="#ff7a59" stop-opacity="0"/></radialGradient>
+        <linearGradient id="lrs-pole" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6f7884"/><stop offset=".45" stop-color="#b9c1ca"/><stop offset="1" stop-color="#5d6570"/></linearGradient>
+        <mask id="lrs-moonmask"><rect x="0" y="0" width="960" height="520" fill="#fff"/><circle cx="128" cy="76" r="30" fill="#000"/></mask>
+      </defs>
+
+      <!-- 하늘 -->
+      <rect width="960" height="520" fill="url(#lrs-day)"/>
+      <rect class="lrs-nightsky" width="960" height="520" fill="url(#lrs-night)"/>
+      <g class="lrs-stars"></g>
+      <g class="lrs-sun"><circle cx="110" cy="88" r="95" fill="url(#lrs-sun)"/><circle cx="110" cy="88" r="34" fill="#fff3b0"/></g>
+      <g class="lrs-moon"><circle cx="110" cy="88" r="30" fill="#f3efd9" mask="url(#lrs-moonmask)"/></g>
+
+      <!-- 건물 (빛공해 민원 주택) -->
+      <g class="lrs-bldg">
+        <rect x="22" y="250" width="110" height="190" fill="#56657c"/>
+        <rect x="140" y="300" width="96" height="140" fill="#4a586d"/>
+        <rect x="22" y="244" width="110" height="8" fill="#465368"/>
+        <g class="lrs-win-day" fill="#a9c8e6"></g>
+      </g>
+
+      <!-- 지면 · 도로 -->
+      <rect x="0" y="436" width="960" height="84" fill="#474e59"/>
+      <rect x="0" y="432" width="960" height="6" fill="#c7cdd5"/>
+      <g fill="#e9edf1"><rect x="40" y="478" width="60" height="5" rx="2"/><rect x="170" y="478" width="60" height="5" rx="2"/><rect x="300" y="478" width="60" height="5" rx="2"/><rect x="430" y="478" width="60" height="5" rx="2"/><rect x="560" y="478" width="60" height="5" rx="2"/><rect x="690" y="478" width="60" height="5" rx="2"/></g>
+
+      <!-- 지주 · 암 · 케이블 -->
+      <g stroke="#9aa3ad" stroke-width="1.5"><line x1="800" y1="58" x2="300" y2="146"/><line x1="800" y1="58" x2="500" y2="146"/><line x1="800" y1="58" x2="680" y2="146"/></g>
+      <rect x="788" y="52" width="24" height="384" rx="4" fill="url(#lrs-pole)"/>
+      <rect x="772" y="426" width="56" height="12" rx="3" fill="#5d6570"/>
+      <rect x="120" y="142" width="680" height="12" rx="6" fill="url(#lrs-pole)"/>
+      <g class="lrs-housing"></g>
+
+      <!-- 야간 어둠 -->
+      <rect class="lrs-dark" width="960" height="520" fill="#040b1f"/>
+
+      <!-- 빛공해 · 창문 불빛 -->
+      <ellipse class="lrs-spillglow" cx="150" cy="330" rx="190" ry="140" fill="url(#lrs-spill)"/>
+      <g class="lrs-win-night" fill="#ffd98a"></g>
+
+      <!-- 조도센서박스 -->
+      <g class="lrs-sensor">
+        <rect x="746" y="120" width="8" height="24" fill="#8e97a2"/>
+        <polygon points="730,94 748,84 774,84 756,94" fill="#ffffff"/>
+        <polygon points="756,94 774,84 774,114 756,124" fill="#c3ccd6"/>
+        <rect x="730" y="94" width="26" height="30" fill="#eef2f6"/>
+        <g class="lrs-scan"><circle cx="751" cy="104" r="14"/><circle cx="751" cy="104" r="14"/><circle cx="751" cy="104" r="14"/></g>
+        <g class="lrs-links" fill="none"><path d="M740 112 Q 500 120 230 170"/><path d="M740 112 Q 560 128 430 170"/><path d="M742 116 Q 690 135 630 170"/><path d="M768 118 Q 830 180 846 268"/></g>
+        <g class="lrs-tag"><rect x="694" y="44" width="114" height="26" rx="13"/><text x="751" y="62" text-anchor="middle" class="lrs-t-sensor"></text></g>
+      </g>
+
+      <!-- 점등 레이어 -->
+      <g class="lrs-lit"></g>
+
+      <text class="lrs-glaretag" x="430" y="268" text-anchor="middle"></text>
+      <text class="lrs-grouptag" x="430" y="268" text-anchor="middle"></text>
+
+      <!-- 상단 상태 칩 -->
+      <g class="lrs-chip"><rect x="16" y="14" width="10" height="28" rx="14"/><text x="34" y="33"></text></g>
+    </svg>
+    <div class="lr-sim__progress"><i></i></div>
+  </div>
+
+  <div class="lr-sim__panel">
+    <div class="lr-sim__tabs" role="tablist"></div>
+    <div class="lr-sim__body">
+      <div class="lr-sim__text"><h3></h3><p></p></div>
+      <div class="lr-sim__meters">
+        <div class="lr-sim__m"><span class="lrs-l-amb"></span><strong class="lrs-lux"></strong></div>
+        <div class="lr-sim__m"><span class="lrs-l-sig"></span><div class="lr-sim__bar"><i></i></div><strong class="lrs-pct"></strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@property --night{syntax:'<number>';inherits:true;initial-value:0}
+@property --lamp{syntax:'<number>';inherits:true;initial-value:1}
+@property --glare{syntax:'<number>';inherits:true;initial-value:.25}
+@property --spill{syntax:'<number>';inherits:true;initial-value:0}
+@property --scan{syntax:'<number>';inherits:true;initial-value:0}
+@property --sensor{syntax:'<number>';inherits:true;initial-value:1}
+.lr-sim{--night:0;--lamp:1;--glare:.25;--spill:0;--scan:0;--sensor:1;
+  transition:--night 1.6s ease,--lamp 1.4s ease .5s,--glare 1.4s ease .5s,--spill 1.4s ease .5s,--scan .9s ease,--sensor .8s ease;
+  max-width:960px;margin:0 auto;border-radius:18px;overflow:hidden;background:#0d1522;color:#e7edf5;
+  box-shadow:0 18px 50px rgba(8,20,40,.22);font-family:inherit;line-height:1.5;text-align:left}
+.lr-sim *{box-sizing:border-box}
+.lr-sim__stage{position:relative}
+.lr-sim__svg{display:block;width:100%;height:auto}
+.lr-sim text{font-family:inherit}
+.lr-sim .lrs-nightsky,.lr-sim .lrs-stars,.lr-sim .lrs-win-night{opacity:var(--night)}
+.lr-sim .lrs-dark{opacity:calc(var(--night)*.6)}
+.lr-sim .lrs-sun{transform:translateY(calc(var(--night)*300px))}
+.lr-sim .lrs-moon{opacity:var(--night);transform:translateY(calc((1 - var(--night))*220px))}
+.lr-sim .lrs-spillglow{opacity:calc(var(--spill)*var(--night))}
+.lr-sim .lrs-sensor{opacity:var(--sensor)}
+.lr-sim .lrs-scan circle{fill:none;stroke:#3fe0c5;stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center}
+.lr-sim .lrs-scan{opacity:var(--scan)}
+.lr-sim .lrs-scan circle{animation:lrs-ripple 2.4s ease-out infinite}
+.lr-sim .lrs-scan circle:nth-child(2){animation-delay:.8s}
+.lr-sim .lrs-scan circle:nth-child(3){animation-delay:1.6s}
+@keyframes lrs-ripple{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(3.6)}}
+.lr-sim .lrs-links{opacity:var(--scan)}
+.lr-sim .lrs-links path{stroke:#3fe0c5;stroke-width:2;stroke-dasharray:6 8;animation:lrs-flow 1s linear infinite}
+@keyframes lrs-flow{to{stroke-dashoffset:-28}}
+.lr-sim .lrs-tag rect{fill:rgba(10,24,40,.82);stroke:#3fe0c5;stroke-width:1.5}
+.lr-sim .lrs-tag text{fill:#bff7ec;font-size:13px;font-weight:700}
+.lr-sim .lamp{opacity:0;transition:opacity .45s ease}
+.lr-sim .lamp.is-on{opacity:1}
+.lr-sim .lamp .core{opacity:var(--lamp)}
+.lr-sim .lamp .halo{opacity:calc(var(--glare)*.9);mix-blend-mode:screen;transform-box:fill-box;transform-origin:center;transform:scale(calc(.4 + var(--glare)*.95))}
+.lr-sim .lamp .rays{opacity:calc((var(--glare) - .5)*2*var(--night));transform-box:fill-box;transform-origin:center;animation:lrs-twinkle 1.8s ease-in-out infinite}
+@keyframes lrs-twinkle{50%{transform:scale(.88) rotate(4deg)}}
+.lr-sim .lrs-glaretag{opacity:calc((var(--glare) - .6)*2.5*var(--night));fill:#ffd1c9;font-size:20px;font-weight:800;letter-spacing:.04em;paint-order:stroke;stroke:#3a0a06;stroke-width:4px}
+.lr-sim .lrs-grouptag{opacity:calc(var(--scan)*var(--night));fill:#bff7ec;font-size:16px;font-weight:700;paint-order:stroke;stroke:#061a1a;stroke-width:4px}
+.lr-sim .lrs-chip rect{fill:rgba(255,255,255,.85);transition:width .4s}
+.lr-sim .lrs-chip text{font-size:14px;font-weight:700;fill:#13314f}
+.lr-sim.is-night .lrs-chip rect{fill:rgba(8,18,36,.8)}
+.lr-sim.is-night .lrs-chip text{fill:#e7edf5}
+.lr-sim__progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.12)}
+.lr-sim__progress i{display:block;height:100%;width:0;background:#3fe0c5}
+.lr-sim__progress i.run{animation:lrs-prog linear forwards}
+@keyframes lrs-prog{to{width:100%}}
+.lr-sim__panel{padding:18px 22px 22px}
+.lr-sim__tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.lr-sim__tabs button{appearance:none;border:1px solid rgba(255,255,255,.18);background:transparent;color:#b7c3d1;font:inherit;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer;transition:all .25s}
+.lr-sim__tabs button:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.lr-sim__tabs button[aria-selected="true"]{background:#3fe0c5;border-color:#3fe0c5;color:#04211c}
+.lr-sim__tabs button[data-i="1"][aria-selected="true"]{background:#ff6b57;border-color:#ff6b57;color:#2a0602}
+.lr-sim__body{display:grid;grid-template-columns:1fr 260px;gap:22px;align-items:center}
+.lr-sim__text h3{margin:0 0 6px;font-size:20px;line-height:1.35;color:#fff;font-weight:800;letter-spacing:-.01em}
+.lr-sim__text p{margin:0;font-size:15px;color:#b7c3d1}
+.lr-sim__meters{display:grid;gap:10px}
+.lr-sim__m{display:grid;grid-template-columns:86px 1fr auto;align-items:center;gap:10px;background:rgba(255,255,255,.05);border-radius:12px;padding:10px 12px;font-size:13px;color:#9fb0c2}
+.lr-sim__m strong{color:#fff;font-size:15px;grid-column:3}
+.lr-sim__m:first-child strong{grid-column:2 / 4;text-align:right}
+.lr-sim__bar{height:8px;border-radius:8px;background:rgba(255,255,255,.12);overflow:hidden}
+.lr-sim__bar i{display:block;height:100%;width:100%;border-radius:8px;background:#3fe0c5;transition:width 1.4s ease .5s,background .6s}
+.lr-sim.t-warn .lr-sim__bar i{background:#ff6b57}
+.lr-sim.t-day .lr-sim__bar i{background:#ffd23f}
+@media (max-width:720px){.lr-sim__body{grid-template-columns:1fr}.lr-sim__text h3{font-size:18px}.lr-sim__panel{padding:16px}}
+.lr-sim__voice{margin-left:auto}
+.lr-sim__tabs button.lr-sim__voice[aria-pressed="true"]{background:rgba(63,224,197,.15);border-color:#3fe0c5;color:#bff7ec}
+@media (max-width:720px){.lr-sim__voice{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.lr-sim .lrs-scan circle,.lr-sim .lrs-links path,.lr-sim .lamp .rays{animation:none}}
+</style>
+
+<script>
+(function(){
+  var T={
+    ko:{tabs:['주간','야간 · 일반 신호등','야간 · 라이트로드'],
+      chip:['주간','야간 · 센서 없음','야간 · 조도센서 작동'],
+      title:['낮에는 햇빛 아래서도 또렷하게','밤에도 대낮 밝기 그대로 — 눈부심과 빛공해','조도센서박스가 밝기를 재고, 신호등을 함께 낮춥니다'],
+      desc:['주변이 밝은 낮에는 신호등이 100% 밝기로 켜져 멀리서도 선명하게 보입니다.',
+            '일반 신호등은 한밤중에도 낮과 같은 밝기로 켜집니다. 운전자는 눈이 부시고, 인근 주택에는 빛공해가 생깁니다.',
+            '정밀 조도센서박스가 교차로의 실제 밝기를 측정해 같은 방향의 차량·보행 신호를 한꺼번에 낮춥니다. 낮 대비 약 42% 밝기에서 눈부심 평가 “적정”. 추가 배선 없이 기존 제어기에 설치됩니다.'],
+      lux:['약 40,000 lx','약 5 lx','약 5 lx'],
+      amb:'주변 밝기',sig:'신호등 밝기',sensor:'조도센서박스',glare:'눈부심!',group:'같은 방향 신호 일괄 디밍',voiceOn:'음성 안내 듣기',voiceOff:'음성 끄기',speech:'ko-KR'},
+    en:{tabs:['Day','Night · Standard signal','Night · Light-Road'],
+      chip:['Day','Night · no sensor','Night · light sensor on'],
+      title:['Clear and bright in full daylight','Daytime brightness at midnight: glare and light pollution','The sensor box measures the light and dims the signals together'],
+      desc:['In bright daylight the signals run at 100% so drivers see them clearly from a distance.',
+            'Standard signals stay at daytime brightness all night. Drivers are dazzled and nearby homes get light pollution.',
+            'A precision light sensor box measures the real brightness at the intersection and dims every vehicle and pedestrian signal on the approach together. At about 42% of daytime brightness, glare was rated “appropriate”. No new wiring needed.'],
+      lux:['~40,000 lx','~5 lx','~5 lx'],
+      amb:'Ambient light',sig:'Signal output',sensor:'Light sensor box',glare:'Glare!',group:'Approach dimmed as one group',voiceOn:'Play narration',voiceOff:'Mute',speech:'en-US'}
+  };
+  var P=[{night:0,lamp:1,glare:.25,spill:0,scan:0,sensor:1,pct:100,tone:'day'},
+         {night:1,lamp:1,glare:1,spill:1,scan:0,sensor:0,pct:100,tone:'warn'},
+         {night:1,lamp:.62,glare:.3,spill:.06,scan:1,sensor:1,pct:42,tone:'ok'}];
+  var COL={red:'#ff3b30',amber:'#ffb000',green:'#14e07a'};
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,a,p){var e=document.createElementNS(NS,tag);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+
+  function lamp(parent,x,y,kind,shape){
+    var c=kind==='arrow'?'green':kind, g=el('g',{'class':'lamp','data-k':kind},parent);
+    el('circle',{'class':'halo',cx:x,cy:y,r:72,fill:'url(#lrs-h-'+c+')'},g);
+    var rays=el('g',{'class':'rays',stroke:COL[c],'stroke-width':1.6,'stroke-linecap':'round',opacity:.7},g);
+    el('line',{x1:x-120,y1:y,x2:x+120,y2:y},rays);el('line',{x1:x,y1:y-70,x2:x,y2:y+70},rays);
+    el('line',{x1:x-60,y1:y-60,x2:x+60,y2:y+60,'stroke-width':1},rays);el('line',{x1:x-60,y1:y+60,x2:x+60,y2:y-60,'stroke-width':1},rays);
+    var core=el('g',{'class':'core'},g);
+    if(shape==='arrow'){
+      el('path',{d:'M'+(x+9)+' '+y+' H'+(x-9)+' M'+(x-9)+' '+y+' l7 -7 M'+(x-9)+' '+y+' l7 7',stroke:'#7dffbe','stroke-width':4.5,'stroke-linecap':'round','stroke-linejoin':'round',fill:'none'},core);
+    }else if(shape==='stand'){
+      el('rect',{x:x-14,y:y-24,width:28,height:48,rx:4,fill:'#2a0b0b'},core);
+      el('circle',{cx:x,cy:y-14,r:4.5,fill:'#ff5a4e'},core);
+      el('path',{d:'M'+(x-6)+' '+(y-7)+'h12v15h-3v12h-6v-12h-3z',fill:'#ff5a4e'},core);
+    }else if(shape==='walk'){
+      el('rect',{x:x-14,y:y-24,width:28,height:48,rx:4,fill:'#06240f'},core);
+      el('circle',{cx:x+1,cy:y-14,r:4.5,fill:'#3dffa0'},core);
+      el('path',{d:'M'+x+' '+(y-8)+' l-1 12 l-6 10 M'+(x-1)+' '+(y+4)+' l6 10 M'+(x-6)+' '+(y-2)+' l6 -5 l6 5',stroke:'#3dffa0','stroke-width':3.4,'stroke-linecap':'round','stroke-linejoin':'round',fill:'none'},core);
+    }else{
+      el('circle',{cx:x,cy:y,r:17,fill:COL[c]},core);
+      el('circle',{cx:x-5,cy:y-5,r:6,fill:'#fff',opacity:.45},core);
+    }
+    return g;
+  }
+
+  function init(root){
+    var t=T[root.getAttribute('data-lang')==='en'?'en':'ko'];
+    var svg=root.querySelector('svg'),q=function(s){return root.querySelector(s)};
+    // 별
+    var stars=q('.lrs-stars'),s=7;
+    for(var i=0;i<46;i++){s=(s*9301+49297)%233280;var x=s/233280*960;s=(s*9301+49297)%233280;var y=s/233280*230;
+      el('circle',{cx:x.toFixed(1),cy:y.toFixed(1),r:(i%5?0.9:1.6),fill:'#fff',opacity:(i%3?.6:.95)},stars)}
+    // 창문
+    var wd=q('.lrs-win-day'),wn=q('.lrs-win-night');
+    [[36,268,4,6,24,28],[154,318,3,4,26,28]].forEach(function(b){for(var r=0;r<b[3];r++)for(var c=0;c<b[2];c++){
+      var a={x:b[0]+c*b[4],y:b[1]+r*b[5],width:14,height:16,rx:2};el('rect',a,wd);if((r+c)%3!==1)el('rect',a,wn)}});
+    // 신호등 몸체 + 점등
+    var hs=q('.lrs-housing'),lit=q('.lrs-lit'),lamps=[];
+    [230,430,630].forEach(function(cx){
+      el('rect',{x:cx-6,y:152,width:12,height:14,fill:'#5d6570'},hs);
+      el('rect',{x:cx-96,y:164,width:192,height:58,rx:12,fill:'#1b212a',stroke:'#0b0f15','stroke-width':2},hs);
+      [['red',-63],['amber',-21],['arrow',21],['green',63]].forEach(function(L){
+        var x=cx+L[1],y=193;el('circle',{cx:x,cy:y,r:19,fill:'#0a0d12',stroke:COL[L[0]==='arrow'?'green':L[0]],'stroke-opacity':.35,'stroke-width':2},hs);
+        lamps.push(lamp(lit,x,y,L[0],L[0]==='arrow'?'arrow':null))});
+    });
+    el('rect',{x:812,y:288,width:14,height:10,fill:'#5d6570'},hs);el('rect',{x:812,y:350,width:14,height:10,fill:'#5d6570'},hs);
+    el('rect',{x:824,y:262,width:44,height:132,rx:8,fill:'#1b212a',stroke:'#0b0f15','stroke-width':2},hs);
+    el('rect',{x:832,y:272,width:28,height:52,rx:4,fill:'#160909'},hs);el('rect',{x:832,y:332,width:28,height:52,rx:4,fill:'#06140b'},hs);
+    var pedR=lamp(lit,846,298,'red','stand'),pedG=lamp(lit,846,358,'green','walk');
+    // 텍스트
+    q('.lrs-t-sensor').textContent=t.sensor;q('.lrs-glaretag').textContent=t.glare;q('.lrs-grouptag').textContent=t.group;
+    q('.lrs-l-amb').textContent=t.amb;q('.lrs-l-sig').textContent=t.sig;
+    var tabs=q('.lr-sim__tabs'),btns=t.tabs.map(function(name,i){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('data-i',i);b.textContent=name;tabs.appendChild(b);return b});
+    var chipT=q('.lrs-chip text'),chipR=q('.lrs-chip rect'),bar=q('.lr-sim__bar i'),prog=q('.lr-sim__progress i');
+
+    // 신호 순환 (적색 ↔ 녹색+좌회전)
+    var sig=0;function cycle(){sig^=1;lamps.forEach(function(g){var k=g.getAttribute('data-k');g.classList.toggle('is-on',sig===0?k==='red':(k==='green'||k==='arrow'))});
+      pedG.classList.toggle('is-on',sig===0);pedR.classList.toggle('is-on',sig===1)}
+    sig=1;cycle();setInterval(cycle,3000);
+
+    var cur=-1,timer,DUR=6500;
+    function go(i){cur=i;var p=P[i];
+      ['night','lamp','glare','spill','scan','sensor'].forEach(function(k){root.style.setProperty('--'+k,p[k])});
+      root.classList.toggle('is-night',p.night>0);root.classList.remove('t-day','t-warn','t-ok');root.classList.add('t-'+p.tone);
+      btns.forEach(function(b,j){b.setAttribute('aria-selected',j===i)});
+      q('.lr-sim__text h3').textContent=t.title[i];q('.lr-sim__text p').textContent=t.desc[i];
+      q('.lrs-lux').textContent=t.lux[i];q('.lrs-pct').textContent=p.pct+'%';bar.style.width=p.pct+'%';
+      chipT.textContent=(p.night?'\u263E ':'\u2600 ')+t.chip[i];
+      try{chipR.setAttribute('width',chipT.getComputedTextLength()+30)}catch(e){}
+      prog.classList.remove('run');void prog.offsetWidth;prog.style.animationDuration=DUR+'ms';prog.classList.add('run');
+      clearTimeout(timer);timer=setTimeout(function(){go((cur+1)%3)},DUR)}
+    btns.forEach(function(b,i){b.addEventListener('click',function(){go(i)})});
+    // 음성 안내 (브라우저 내장 음성, 버튼을 눌러야 시작)
+    var synth=window.speechSynthesis,voiceOn=false,speakId=0;
+    if(synth){
+      var vb=document.createElement('button');vb.type='button';vb.className='lr-sim__voice';tabs.appendChild(vb);
+      var setVb=function(){vb.textContent=(voiceOn?'🔊 ':'🔈 ')+(voiceOn?t.voiceOff:t.voiceOn);vb.setAttribute('aria-pressed',voiceOn)};setVb();
+      vb.addEventListener('click',function(){voiceOn=!voiceOn;speakId++;setVb();synth.cancel();go(voiceOn?0:cur)});
+    }
+    var baseGo=go;go=function(i){baseGo(i);if(!voiceOn||!synth)return;
+      clearTimeout(timer);synth.cancel();
+      var u=new SpeechSynthesisUtterance(t.title[i]+'. '+t.desc[i].replace(/[“”]/g,''));
+      u.lang=t.speech;u.rate=t.speech==='ko-KR'?1.05:1;
+      var vs=synth.getVoices().filter(function(v){return v.lang.replace('_','-').indexOf(t.speech.slice(0,2))===0});if(vs.length)u.voice=vs[0];
+      var est=Math.max(DUR,u.text.length*(t.speech==='ko-KR'?140:70));
+      prog.classList.remove('run');void prog.offsetWidth;prog.style.animationDuration=est+'ms';prog.classList.add('run');
+      var my=++speakId,done=false,next=function(){if(done||my!==speakId||!voiceOn)return;done=true;clearTimeout(timer);timer=setTimeout(function(){if(cur===i)go((i+1)%3)},900)};
+      u.onend=next;timer=setTimeout(next,est+4000);
+      synth.speak(u)};
+    go(0);
+  }
+  function boot(){document.querySelectorAll('.lr-sim:not([data-ready])').forEach(function(r){r.setAttribute('data-ready','1');init(r)})}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<!-- ===== 라이트로드 디밍 시뮬레이션 끝 : 여기까지 복사 ===== -->
+
+<h2>English (en.html 용 — 위 코드에서 data-lang="ko" 를 "en" 으로만 바꾸면 됩니다)</h2>
+<div class="lr-sim" data-lang="en">
+  <div class="lr-sim__stage">
+    <svg class="lr-sim__svg" viewBox="0 0 960 520" role="img" aria-label="조도센서 기반 자동 휘도제어 LED 신호등 시뮬레이션">
+      <defs>
+        <linearGradient id="lrs-day" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f9fe0"/><stop offset="1" stop-color="#cfeafc"/></linearGradient>
+        <linearGradient id="lrs-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030817"/><stop offset="1" stop-color="#18284a"/></linearGradient>
+        <radialGradient id="lrs-sun"><stop offset="0" stop-color="#fffbe0"/><stop offset=".45" stop-color="#ffe066"/><stop offset=".55" stop-color="#ffd23f" stop-opacity=".55"/><stop offset="1" stop-color="#ffd23f" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-h-red"><stop offset="0" stop-color="#ff4b3e" stop-opacity=".95"/><stop offset=".3" stop-color="#ff3b30" stop-opacity=".45"/><stop offset="1" stop-color="#ff3b30" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-h-amber"><stop offset="0" stop-color="#ffc233" stop-opacity=".95"/><stop offset=".3" stop-color="#ffb000" stop-opacity=".45"/><stop offset="1" stop-color="#ffb000" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-h-green"><stop offset="0" stop-color="#3dffa0" stop-opacity=".95"/><stop offset=".3" stop-color="#14e07a" stop-opacity=".45"/><stop offset="1" stop-color="#14e07a" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lrs-spill"><stop offset="0" stop-color="#ff7a59" stop-opacity=".55"/><stop offset="1" stop-color="#ff7a59" stop-opacity="0"/></radialGradient>
+        <linearGradient id="lrs-pole" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6f7884"/><stop offset=".45" stop-color="#b9c1ca"/><stop offset="1" stop-color="#5d6570"/></linearGradient>
+        <mask id="lrs-moonmask"><rect x="0" y="0" width="960" height="520" fill="#fff"/><circle cx="128" cy="76" r="30" fill="#000"/></mask>
+      </defs>
+
+      <!-- 하늘 -->
+      <rect width="960" height="520" fill="url(#lrs-day)"/>
+      <rect class="lrs-nightsky" width="960" height="520" fill="url(#lrs-night)"/>
+      <g class="lrs-stars"></g>
+      <g class="lrs-sun"><circle cx="110" cy="88" r="95" fill="url(#lrs-sun)"/><circle cx="110" cy="88" r="34" fill="#fff3b0"/></g>
+      <g class="lrs-moon"><circle cx="110" cy="88" r="30" fill="#f3efd9" mask="url(#lrs-moonmask)"/></g>
+
+      <!-- 건물 (빛공해 민원 주택) -->
+      <g class="lrs-bldg">
+        <rect x="22" y="250" width="110" height="190" fill="#56657c"/>
+        <rect x="140" y="300" width="96" height="140" fill="#4a586d"/>
+        <rect x="22" y="244" width="110" height="8" fill="#465368"/>
+        <g class="lrs-win-day" fill="#a9c8e6"></g>
+      </g>
+
+      <!-- 지면 · 도로 -->
+      <rect x="0" y="436" width="960" height="84" fill="#474e59"/>
+      <rect x="0" y="432" width="960" height="6" fill="#c7cdd5"/>
+      <g fill="#e9edf1"><rect x="40" y="478" width="60" height="5" rx="2"/><rect x="170" y="478" width="60" height="5" rx="2"/><rect x="300" y="478" width="60" height="5" rx="2"/><rect x="430" y="478" width="60" height="5" rx="2"/><rect x="560" y="478" width="60" height="5" rx="2"/><rect x="690" y="478" width="60" height="5" rx="2"/></g>
+
+      <!-- 지주 · 암 · 케이블 -->
+      <g stroke="#9aa3ad" stroke-width="1.5"><line x1="800" y1="58" x2="300" y2="146"/><line x1="800" y1="58" x2="500" y2="146"/><line x1="800" y1="58" x2="680" y2="146"/></g>
+      <rect x="788" y="52" width="24" height="384" rx="4" fill="url(#lrs-pole)"/>
+      <rect x="772" y="426" width="56" height="12" rx="3" fill="#5d6570"/>
+      <rect x="120" y="142" width="680" height="12" rx="6" fill="url(#lrs-pole)"/>
+      <g class="lrs-housing"></g>
+
+      <!-- 야간 어둠 -->
+      <rect class="lrs-dark" width="960" height="520" fill="#040b1f"/>
+
+      <!-- 빛공해 · 창문 불빛 -->
+      <ellipse class="lrs-spillglow" cx="150" cy="330" rx="190" ry="140" fill="url(#lrs-spill)"/>
+      <g class="lrs-win-night" fill="#ffd98a"></g>
+
+      <!-- 조도센서박스 -->
+      <g class="lrs-sensor">
+        <rect x="746" y="120" width="8" height="24" fill="#8e97a2"/>
+        <polygon points="730,94 748,84 774,84 756,94" fill="#ffffff"/>
+        <polygon points="756,94 774,84 774,114 756,124" fill="#c3ccd6"/>
+        <rect x="730" y="94" width="26" height="30" fill="#eef2f6"/>
+        <g class="lrs-scan"><circle cx="751" cy="104" r="14"/><circle cx="751" cy="104" r="14"/><circle cx="751" cy="104" r="14"/></g>
+        <g class="lrs-links" fill="none"><path d="M740 112 Q 500 120 230 170"/><path d="M740 112 Q 560 128 430 170"/><path d="M742 116 Q 690 135 630 170"/><path d="M768 118 Q 830 180 846 268"/></g>
+        <g class="lrs-tag"><rect x="694" y="44" width="114" height="26" rx="13"/><text x="751" y="62" text-anchor="middle" class="lrs-t-sensor"></text></g>
+      </g>
+
+      <!-- 점등 레이어 -->
+      <g class="lrs-lit"></g>
+
+      <text class="lrs-glaretag" x="430" y="268" text-anchor="middle"></text>
+      <text class="lrs-grouptag" x="430" y="268" text-anchor="middle"></text>
+
+      <!-- 상단 상태 칩 -->
+      <g class="lrs-chip"><rect x="16" y="14" width="10" height="28" rx="14"/><text x="34" y="33"></text></g>
+    </svg>
+    <div class="lr-sim__progress"><i></i></div>
+  </div>
+
+  <div class="lr-sim__panel">
+    <div class="lr-sim__tabs" role="tablist"></div>
+    <div class="lr-sim__body">
+      <div class="lr-sim__text"><h3></h3><p></p></div>
+      <div class="lr-sim__meters">
+        <div class="lr-sim__m"><span class="lrs-l-amb"></span><strong class="lrs-lux"></strong></div>
+        <div class="lr-sim__m"><span class="lrs-l-sig"></span><div class="lr-sim__bar"><i></i></div><strong class="lrs-pct"></strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+</body>
+</html>
