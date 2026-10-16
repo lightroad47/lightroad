@@ -224,6 +224,47 @@ nav a.lang{border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-
 .soon .acts a{text-decoration:none;font-weight:700;border:1px solid var(--blue);border-radius:6px;padding:11px 18px}
 .soon .acts a.p{background:var(--blue);color:#fff}
 
+/* event strip */
+.event{background:var(--blue);color:#fff}
+.event .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 20px;padding-top:11px;padding-bottom:11px;font-size:14px}
+.event b{font-weight:700}
+.event span.d{color:#D6E7F8}
+.event a{color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.6);white-space:nowrap}
+.event a:hover{color:#fff;border-bottom-color:#fff}
+
+/* applications */
+.apps{display:flex;flex-wrap:wrap;gap:24px}
+.apps > div{flex:1 1 420px;min-width:0;border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.apps h4{margin:0;font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{background:var(--alt);border-radius:999px;padding:7px 14px;font-size:15px;font-weight:500}
+.apps p{font-size:14px;color:var(--muted)}
+
+/* install example */
+.install{margin:8px 0 0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.install img{display:block;width:100%;height:auto}
+.install figcaption{padding:12px 16px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+
+/* ITS world congress */
+.its{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+.its .col{flex:1 1 380px}
+.its dl{margin:0;display:grid;grid-template-columns:72px 1fr;gap:8px 16px;font-size:15px}
+.its dt{color:var(--muted)}
+.its dd{margin:0;font-weight:500}
+.booth{flex:1 1 560px;min-width:0;display:flex;flex-wrap:wrap;gap:20px}
+.booth .cert{flex:1 1 200px}
+.booth .cert.wide{flex:3 1 340px}
+.booth .cert span.thumb{aspect-ratio:auto;height:300px;background:var(--alt)}
+.booth .cert img{object-fit:contain;object-position:center}
+@media (max-width:560px){.booth .cert span.thumb{height:240px}}
+
+/* history */
+.hist{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;border-left:2px solid var(--navy-line)}
+.hist li{position:relative;padding:0 0 18px 20px;display:flex;flex-direction:column;gap:2px;font-size:15px;color:#C5D3E0}
+.hist li:last-child{padding-bottom:0}
+.hist li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:5px;background:var(--sky)}
+.hist b{color:#fff;font-size:14px;font-variant-numeric:tabular-nums}
+
 footer{background:var(--alt);border-top:1px solid var(--line)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:28px;padding-bottom:28px;font-size:13px;color:var(--muted)}
 
@@ -265,6 +306,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
 </header>
 
 <main>
+
+<div class="event">
+  <div class="wrap">
+    <span><b>2026 강릉 ITS 세계총회 참가</b> <span class="d">· 10.19~23 · 강릉 올림픽파크</span></span>
+    <a href="#its2026">전시 판넬·배너 보기 →</a>
+  </div>
+</div>
 
 <section id="top" class="hero dark">
   <div class="wrap inner">
@@ -624,6 +672,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
     </div>
     <p class="note">센서부가 고장 나더라도 신호등은 일반 신호등처럼 주간 밝기로 정상 점등됩니다. 현재는 경찰청 규격에 따라 주·야간 2단계로 납품하며, 기준이 세분화되면 핵심기술 변경 없이 다단계 제어로 전환할 수 있습니다.</p>
 
+    <h3 class="sub">적용 분야</h3>
+    <div class="apps">
+      <div>
+        <h4>설치 장소</h4>
+        <ul class="chips"><li>교차로</li><li>어린이보호구역</li><li>사고다발지역</li><li>스마트시티</li><li>VMS(도로전광표지)</li></ul>
+        <p>빛공해 민원이 잦은 주거지 인접 교차로, 야간 눈부심이 문제 되는 구간에 특히 효과적입니다.</p>
+      </div>
+      <div>
+        <h4>함께 제어할 수 있는 시설</h4>
+        <ul class="chips"><li>LED 교통신호등</li><li>바닥형 보행신호등</li><li>숫자형 신호등</li><li>차량 보조장치</li></ul>
+        <p>같은 대표조도 값으로 한 지주의 여러 시설 밝기를 함께 맞출 수 있습니다.</p>
+      </div>
+    </div>
+
     <h3 class="sub">기존 방식과 비교</h3>
     <div class="tbl">
       <table>
@@ -705,6 +767,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       <h2>설치비 9% 추가로, 10년간 설치비의 약 25%를 돌려받습니다</h2>
       <p class="lead">지주 1개에 차량용 1면 4색 3조, 보행용 1면 2색 1조, 적·녹 숫자형 보행보조장치 1조, 조도센서부 2조를 설치하는 경우의 예상 금액입니다.</p>
       <p style="font-size:14px;color:var(--muted)">LED 수명 연장은 구동전류 저감에 따른 이론값(약 3.5배) 대신 30%만 보수적으로 반영했습니다.</p>
+      <figure class="install">
+        <img src="images/install-example.jpg" alt="지주 1개 설치 예시: 차량 신호등 A그룹(1면 4색 3조)은 A 센서로, 보행 신호등 B그룹(1면 2색·숫자형 1조)은 B 센서로 각각 통합제어" loading="lazy">
+        <figcaption>지주 1개 설치 예시. 차량 신호등 3조는 A 센서, 보행 신호등은 B 센서가 그룹 단위로 함께 제어합니다.</figcaption>
+      </figure>
     </div>
     <div class="ledger">
       <div><span>전체 설치 예상 비용</span><span>2,208,000원</span></div>
@@ -786,7 +852,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       </details>
     </div>
     <div class="cards">
-      <div class="card"><h3>구매 방법</h3><p>나라장터에서 아래 물품식별번호 또는 '라이트로드'로 검색해 구매하실 수 있습니다. 혁신제품 지정: [지정번호 기재]</p></div>
+      <div class="card"><h3>구매 방법</h3><p>나라장터에서 아래 물품식별번호 또는 '라이트로드'로 검색해 구매하실 수 있습니다.</p></div>
       <div class="card"><h3>설치</h3><p>기존 신호제어기 호환. 설치비는 일반 신호등과 같습니다. 조도센서부는 통상 지주 1개에 차량용·보행용 각 1대를 권장하며, 인공광원이 직접 비치는 곳은 피해 설치합니다.</p></div>
       <div class="card"><h3>A/S</h3><p>3년 이내 무상. 3~10년은 부품비·출장비 실비만 받고 별도 이윤은 없습니다. 정기점검이나 소모품 비용은 없습니다.</p></div>
       <div class="card"><h3>시범 설치</h3><p>빛공해 민원이 잦은 교차로를 대상으로 지자체와 함께 시범 운영을 진행합니다. 에너지 절감과 정상 작동, 운전자·보행자 판독성을 함께 평가합니다.</p></div>
@@ -807,6 +873,31 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
   </div>
 </section>
 
+<section id="its2026" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">전시·행사</p>
+      <h2>2026 강릉 ITS 세계총회 참가</h2>
+      <p class="lead">국내외 지능형교통 기관과 기업이 모이는 ITS 세계총회 전시장에서 자동 휘도제어 LED 교통신호등을 소개합니다. 한국도로교통공단의 국내 교통안전 기업 해외진출 지원으로 참가합니다.</p>
+    </div>
+    <div class="its">
+      <div class="col">
+        <dl>
+          <dt>행사</dt><dd>2026 강릉 ITS 세계총회 (Beyond Mobility, Connected World)</dd>
+          <dt>기간</dt><dd>2026년 10월 19일(월) ~ 23일(금)</dd>
+          <dt>장소</dt><dd>강릉 올림픽파크 일원</dd>
+          <dt>주최</dt><dd>국토교통부, 강릉시</dd>
+        </dl>
+        <p style="font-size:14px;color:var(--muted)">전시장에 선보이는 홍보 판넬과 배너입니다. 누르면 크게 볼 수 있습니다.</p>
+      </div>
+      <div class="booth">
+        <a class="cert wide" href="images/its2026-panel.jpg"><span class="thumb"><img src="images/its2026-panel.jpg" alt="ITS 세계총회 전시 판넬: 제품·설치, 작동 원리, 조광과 에너지 절감, 기존 제품 비교, 특허·도입 이력" loading="lazy"></span><b>전시 판넬</b><small>제품·설치, 작동 원리, 에너지 절감, 기존 제품 비교</small></a>
+        <a class="cert" href="images/its2026-banner.jpg"><span class="thumb"><img src="images/its2026-banner.jpg" alt="ITS 세계총회 홍보 배너: 정밀 조도센서 기반 자동 휘도제어 LED 교통신호등" loading="lazy"></span><b>홍보 배너</b><small>주간 식별성 · 야간 눈부심 억제</small></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="company" class="dark">
   <div class="wrap row">
     <div class="col">
@@ -817,6 +908,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
         <span><b>양신환 대표</b>: 교통안전시설 기준·시험 27년, 경찰청 기준·규격 제·개정 참여, KOLAS 기술책임자</span>
         <span><b>기술이사</b>: 물리학 박사, 정부출연연구기관 광도·센서 분야 30년</span>
       </div>
+      <h3 style="font-size:18px;margin-top:16px">연혁</h3>
+      <ul class="hist">
+        <li><b>2023</b>창업진흥원 예비창업패키지 최종 선정, 과업 성공적 완료</li>
+        <li><b>2023.12</b>㈜라이트로드 설립 (도로교통공단 사내벤처 1호)</li>
+        <li><b>2024.07</b>건설기술연구원 SOC 실증센터(연천) 현장 실증</li>
+        <li><b>2025</b>경찰청 교통안전시설심의위원회 심의, 기술 일부 도입·시행</li>
+        <li><b>2026</b>경찰청 표준규격(R02) 성능시험 적합, 조달청 나라장터 27종 등록</li>
+        <li><b>2026.10</b><a href="#its2026" style="color:#C5D3E0">2026 강릉 ITS 세계총회 전시 참가</a></li>
+      </ul>
     </div>
     <div class="col">
       <h3 style="font-size:18px">지식재산</h3>

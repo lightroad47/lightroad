@@ -224,6 +224,47 @@ nav a.lang{border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-
 .soon .acts a{text-decoration:none;font-weight:700;border:1px solid var(--blue);border-radius:6px;padding:11px 18px}
 .soon .acts a.p{background:var(--blue);color:#fff}
 
+/* event strip */
+.event{background:var(--blue);color:#fff}
+.event .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 20px;padding-top:11px;padding-bottom:11px;font-size:14px}
+.event b{font-weight:700}
+.event span.d{color:#D6E7F8}
+.event a{color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.6);white-space:nowrap}
+.event a:hover{color:#fff;border-bottom-color:#fff}
+
+/* applications */
+.apps{display:flex;flex-wrap:wrap;gap:24px}
+.apps > div{flex:1 1 420px;min-width:0;border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.apps h4{margin:0;font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{background:var(--alt);border-radius:999px;padding:7px 14px;font-size:15px;font-weight:500}
+.apps p{font-size:14px;color:var(--muted)}
+
+/* install example */
+.install{margin:8px 0 0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.install img{display:block;width:100%;height:auto}
+.install figcaption{padding:12px 16px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+
+/* ITS world congress */
+.its{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+.its .col{flex:1 1 380px}
+.its dl{margin:0;display:grid;grid-template-columns:72px 1fr;gap:8px 16px;font-size:15px}
+.its dt{color:var(--muted)}
+.its dd{margin:0;font-weight:500}
+.booth{flex:1 1 560px;min-width:0;display:flex;flex-wrap:wrap;gap:20px}
+.booth .cert{flex:1 1 200px}
+.booth .cert.wide{flex:3 1 340px}
+.booth .cert span.thumb{aspect-ratio:auto;height:300px;background:var(--alt)}
+.booth .cert img{object-fit:contain;object-position:center}
+@media (max-width:560px){.booth .cert span.thumb{height:240px}}
+
+/* history */
+.hist{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;border-left:2px solid var(--navy-line)}
+.hist li{position:relative;padding:0 0 18px 20px;display:flex;flex-direction:column;gap:2px;font-size:15px;color:#C5D3E0}
+.hist li:last-child{padding-bottom:0}
+.hist li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:5px;background:var(--sky)}
+.hist b{color:#fff;font-size:14px;font-variant-numeric:tabular-nums}
+
 footer{background:var(--alt);border-top:1px solid var(--line)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:28px;padding-bottom:28px;font-size:13px;color:var(--muted)}
 
@@ -265,6 +306,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
 </header>
 
 <main>
+
+<div class="event">
+  <div class="wrap">
+    <span><b>Exhibiting at the 2026 ITS World Congress, Gangneung</b> <span class="d">· Oct 19–23 · Gangneung Olympic Park</span></span>
+    <a href="#its2026">See our booth panel and banner →</a>
+  </div>
+</div>
 
 <section id="top" class="hero dark">
   <div class="wrap inner">
@@ -624,6 +672,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
     </div>
     <p class="note">If the sensor unit fails, the signal simply lights at normal daytime brightness. Units are currently supplied with two-level day/night control under the Police Agency standard; if the standard adds finer levels, they can switch to multi-level control without changing the core technology.</p>
 
+    <h3 class="sub">Applications</h3>
+    <div class="apps">
+      <div>
+        <h4>Where it is used</h4>
+        <ul class="chips"><li>Intersections</li><li>School zones</li><li>High-risk accident sites</li><li>Smart cities</li><li>VMS (variable message signs)</li></ul>
+        <p>Especially effective at intersections near homes, where night glare and light pollution complaints are common.</p>
+      </div>
+      <div>
+        <h4>Devices it can dim together</h4>
+        <ul class="chips"><li>LED traffic signals</li><li>In-road pedestrian LEDs</li><li>Countdown signals</li><li>Vehicle guidance aids</li></ul>
+        <p>One representative illuminance value sets the brightness of every device on the pole together.</p>
+      </div>
+    </div>
+
     <h3 class="sub">Compared with existing approaches</h3>
     <div class="tbl">
       <table>
@@ -706,6 +768,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       <h2>Add 9% to installation cost, recover about 25% of it over 10 years</h2>
       <p class="lead">Estimate for one pole with three 4-color vehicle signals, one 2-color pedestrian signal, one red/green countdown pedestrian unit and two light sensor units.</p>
       <p style="font-size:14px;color:var(--muted)">LED life extension is counted conservatively at 30%, rather than the theoretical ~3.5× from lower drive current.</p>
+      <figure class="install">
+        <img src="images/install-example.jpg" alt="Example installation on one pole: vehicle signal group A (three 4-aspect heads) controlled by sensor A, pedestrian group B (2-aspect head with countdown) by sensor B" loading="lazy">
+        <figcaption>Example installation on one pole. Sensor A dims the three vehicle signals as a group; sensor B dims the pedestrian signal.</figcaption>
+      </figure>
     </div>
     <div class="ledger">
       <div><span>Total installation estimate</span><span>KRW 2,208,000</span></div>
@@ -787,7 +853,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       </details>
     </div>
     <div class="cards">
-      <div class="card"><h3>Purchasing</h3><p>Search KONEPS by item ID or "Light-Road" to purchase. Innovative Product designation: [designation no.]</p></div>
+      <div class="card"><h3>Purchasing</h3><p>Search KONEPS by item ID or "Light-Road" to purchase.</p></div>
       <div class="card"><h3>Installation</h3><p>Compatible with existing signal controllers; installation cost is the same as a standard signal. One sensor unit each for vehicle and pedestrian signals per pole is typical. Avoid spots lit directly by artificial light.</p></div>
       <div class="card"><h3>After-sales service</h3><p>Free for 3 years. From years 3 to 10, only parts and travel at cost, with no margin. No routine inspection or consumable costs.</p></div>
       <div class="card"><h3>Pilot installation</h3><p>We run pilots with local governments at intersections with frequent light-pollution complaints, evaluating energy savings, correct operation and legibility for drivers and pedestrians.</p></div>
@@ -808,6 +874,31 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
   </div>
 </section>
 
+<section id="its2026" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Events</p>
+      <h2>2026 ITS World Congress, Gangneung</h2>
+      <p class="lead">We present our LED traffic signals with automatic brightness control in the exhibition hall of the ITS World Congress, where ITS agencies and companies from around the world meet. Our participation is supported by the Korea Road Traffic Authority's overseas expansion program for Korean traffic safety companies.</p>
+    </div>
+    <div class="its">
+      <div class="col">
+        <dl>
+          <dt>Event</dt><dd>2026 ITS World Congress (Beyond Mobility, Connected World)</dd>
+          <dt>Dates</dt><dd>October 19–23, 2026</dd>
+          <dt>Venue</dt><dd>Gangneung Olympic Park, Korea</dd>
+          <dt>Hosts</dt><dd>Ministry of Land, Infrastructure and Transport; Gangneung City</dd>
+        </dl>
+        <p style="font-size:14px;color:var(--muted)">The panel and banner shown at our booth. Click to enlarge.</p>
+      </div>
+      <div class="booth">
+        <a class="cert wide" href="images/its2026-panel.jpg"><span class="thumb"><img src="images/its2026-panel.jpg" alt="ITS World Congress booth panel: product and installation, how it works, dimming and energy savings, product comparison, patents and milestones" loading="lazy"></span><b>Booth panel</b><small>Installation, how it works, energy savings, comparison</small></a>
+        <a class="cert" href="images/its2026-banner.jpg"><span class="thumb"><img src="images/its2026-banner.jpg" alt="ITS World Congress banner: adaptive brightness LED traffic signals based on precision light sensing" loading="lazy"></span><b>Roll-up banner</b><small>Clear by day, no glare at night</small></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="company" class="dark">
   <div class="wrap row">
     <div class="col">
@@ -818,6 +909,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
         <span><b>Shinhwan Yang, CEO</b>: 27 years in traffic safety facility standards and testing; contributed to National Police Agency standards; KOLAS technical manager</span>
         <span><b>Technical Director</b>: PhD in physics; 30 years in photometry and sensors at a government research institute</span>
       </div>
+      <h3 style="font-size:18px;margin-top:16px">Milestones</h3>
+      <ul class="hist">
+        <li><b>2023</b>Selected for the KISED Pre-Startup Package; project successfully completed</li>
+        <li><b>2023.12</b>Light-Road Co., Ltd. incorporated (first in-house venture of the Korea Road Traffic Authority)</li>
+        <li><b>2024.07</b>Field trial at the KICT SOC Demonstration Center, Yeoncheon</li>
+        <li><b>2025</b>Reviewed by the National Police Agency Traffic Safety Facilities Deliberation Committee; partial adoption under way</li>
+        <li><b>2026</b>Passed the Police Agency LED signal standard (R02) performance tests; 27 items listed on KONEPS</li>
+        <li><b>2026.10</b><a href="#its2026" style="color:#C5D3E0">Exhibited at the 2026 ITS World Congress, Gangneung</a></li>
+      </ul>
     </div>
     <div class="col">
       <h3 style="font-size:18px">Intellectual property</h3>
