@@ -182,6 +182,37 @@ nav a.lang{border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-
 .hero-sim .lr-sim__meters{grid-template-columns:1fr 1fr}
 @media (max-width:520px){.hero-sim .lr-sim__meters{grid-template-columns:1fr}}
 
+/* certificates */
+.certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:20px}
+.cert{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px;transition:border-color .2s,box-shadow .2s}
+.cert:hover{border-color:var(--blue);box-shadow:0 6px 18px rgba(10,99,191,.12);color:var(--ink)}
+.cert span.thumb{display:block;aspect-ratio:3/4;background:#fff;border-radius:4px;overflow:hidden;border:1px solid var(--alt)}
+.cert img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.cert b{font-size:15px;line-height:1.4}
+.cert small{font-size:13px;color:var(--muted);line-height:1.4}
+.lb{border:0;padding:0;background:transparent;max-width:min(92vw,900px);max-height:92vh}
+.lb::backdrop{background:rgba(5,12,22,.82)}
+.lb img{display:block;max-width:100%;max-height:86vh;margin:0 auto;border-radius:6px;background:#fff}
+.lb p{color:#fff;text-align:center;margin-top:10px;font-size:15px}
+.lb button{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:22px;border:0;background:#fff;color:var(--navy);font-size:24px;line-height:1;cursor:pointer}
+/* procurement */
+.procure{background:#fff;border-radius:8px;padding:24px 28px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center}
+.procure dl{flex:1 1 520px;margin:0;display:grid;grid-template-columns:140px 1fr;gap:10px 16px;font-size:15px}
+.procure dt{color:var(--muted)}
+.procure dd{margin:0;font-weight:500}
+.procure .go{display:flex;flex-direction:column;gap:8px;flex:0 1 260px}
+.procure .go p{font-size:14px;color:var(--muted)}
+.procure .go a{display:inline-block;text-align:center;text-decoration:none;font-weight:700;background:var(--blue);color:#fff;padding:13px 20px;border-radius:6px}
+.procure .go a:hover{background:var(--blue-dark);color:#fff}
+@media (max-width:560px){.procure dl{grid-template-columns:1fr;gap:2px}.procure dd{margin-bottom:10px}}
+/* docs notice */
+.soon{border:1px dashed #B7C3CF;border-radius:8px;padding:28px;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;background:var(--alt)}
+.soon b{display:block;font-size:19px;margin-bottom:6px}
+.soon p{color:var(--muted)}
+.soon .acts{display:flex;flex-wrap:wrap;gap:10px}
+.soon .acts a{text-decoration:none;font-weight:700;border:1px solid var(--blue);border-radius:6px;padding:11px 18px}
+.soon .acts a.p{background:var(--blue);color:#fff}
+
 footer{background:var(--alt);border-top:1px solid var(--line)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:28px;padding-bottom:28px;font-size:13px;color:var(--muted)}
 
@@ -235,7 +266,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
         <ul><li class="r">교통안전 향상</li><li class="y">빛공해 감소</li><li class="g">에너지 절약</li></ul>
       </div>
       <div class="btns">
-        <a href="#docs" class="btn white">제품 자료 받기</a>
+        <a href="#buy" class="btn white">조달 구매 안내</a>
         <a href="#contact" class="btn ghost">시연·도입 문의</a>
       </div>
     </div>
@@ -404,17 +435,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       chip:['주간','야간 · 센서 없음','야간 · 조도센서 작동'],
       title:['낮에는 햇빛 아래서도 또렷하게','밤에도 대낮 밝기 그대로 — 눈부심과 빛공해','조도센서박스가 밝기를 재고, 신호등을 함께 낮춥니다'],
       desc:['주변이 밝은 낮에는 신호등이 100% 밝기로 켜져 멀리서도 선명하게 보입니다.',
-            '일반 신호등은 한밤중에도 낮과 같은 밝기로 켜집니다. 운전자는 눈이 부시고, 인근 주택에는 빛공해가 생깁니다.',
+            '밤의 주변 밝기는 가로등 유무에 따라 약 4~40 lx에 불과하지만, 일반 신호등은 낮과 같은 밝기로 켜집니다. 운전자는 눈이 부시고, 인근 주택에는 빛공해가 생깁니다.',
             '정밀 조도센서박스가 교차로의 실제 밝기를 측정해 같은 방향의 차량·보행 신호를 한꺼번에 낮춥니다. 낮 대비 약 42% 밝기에서 눈부심 평가 “적정”. 추가 배선 없이 기존 제어기에 설치됩니다.'],
-      lux:['약 40,000 lx','약 5 lx','약 5 lx'],
+      lux:['약 40,000 lx','약 4~40 lx','약 4~40 lx'],
       amb:'주변 밝기',sig:'신호등 밝기',sensor:'조도센서박스',glare:'눈부심!',group:'같은 방향 신호 일괄 디밍',voiceOn:'음성 안내 듣기',voiceOff:'음성 끄기',speech:'ko-KR'},
     en:{tabs:['Day','Night · Standard signal','Night · Light-Road'],
       chip:['Day','Night · no sensor','Night · light sensor on'],
       title:['Clear and bright in full daylight','Daytime brightness at midnight: glare and light pollution','The sensor box measures the light and dims the signals together'],
       desc:['In bright daylight the signals run at 100% so drivers see them clearly from a distance.',
-            'Standard signals stay at daytime brightness all night. Drivers are dazzled and nearby homes get light pollution.',
+            'At night the ambient light is only about 4–40 lx, depending on street lighting, yet standard signals stay at daytime brightness. Drivers are dazzled and nearby homes get light pollution.',
             'A precision light sensor box measures the real brightness at the intersection and dims every vehicle and pedestrian signal on the approach together. At about 42% of daytime brightness, glare was rated “appropriate”. No new wiring needed.'],
-      lux:['~40,000 lx','~5 lx','~5 lx'],
+      lux:['~40,000 lx','~4–40 lx','~4–40 lx'],
       amb:'Ambient light',sig:'Signal output',sensor:'Light sensor box',glare:'Glare!',group:'Approach dimmed as one group',voiceOn:'Play narration',voiceOff:'Mute',speech:'en-US'}
   };
   var P=[{night:0,lamp:1,glare:.25,spill:0,scan:0,sensor:1,pct:100,tone:'day'},
@@ -504,7 +535,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
     }
     var baseGo=go;go=function(i){baseGo(i);if(!voiceOn||!synth)return;
       clearTimeout(timer);synth.cancel();
-      var u=new SpeechSynthesisUtterance(t.title[i]+'. '+t.desc[i].replace(/[“”]/g,''));
+      var say=(t.title[i]+'. '+t.desc[i]).replace(/[“”]/g,'');say=t.speech==='ko-KR'?say.replace(/(\d)~(\d)/g,'$1에서 $2').replace(/lx/g,'럭스'):say.replace(/(\d)–(\d)/g,'$1 to $2').replace(/lx/g,'lux');var u=new SpeechSynthesisUtterance(say);
       u.lang=t.speech;u.rate=t.speech==='ko-KR'?1.05:1;
       var vs=synth.getVoices().filter(function(v){return v.lang.replace('_','-').indexOf(t.speech.slice(0,2))===0});if(vs.length)u.voice=vs[0];
       var est=Math.max(DUR,u.text.length*(t.speech==='ko-KR'?140:70));
@@ -526,6 +557,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       <span>경찰청 LED 교통신호등 표준규격(R02) 성능시험 적합</span>
       <span>방송통신기자재 적합등록</span>
       <span>직접생산확인 증명</span>
+      <span>공장등록 (교통 신호장치 제조업)</span>
       <span>특허 2건, 디자인 1건 등록</span>
     </div>
   </div>
@@ -627,10 +659,23 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
           <tr><td>교차로 그룹 동시제어</td><td class="us">단일 센서로 3색 동시 제어 확인</td><td class="src">도로교통공단 KOROAD-G2026-B21-0001</td></tr>
           <tr><td>외함 재질: 인장강도·충격강도·하중변형온도·난연성</td><td class="us">62.5 MPa, 29 kJ/m², 93℃, V-0</td><td class="src">CT25-087120K</td></tr>
           <tr><td>Cut-off 상태 임피던스 (기준 10 kΩ 미만)</td><td class="us">7.2 kΩ</td><td class="src">키엘연구원</td></tr>
-          <tr><td>방송통신기자재 적합등록, 직접생산확인</td><td class="us">보유</td><td class="src">직접생산 제2026-0447-00316호</td></tr>
+          <tr><td>방송통신기자재 적합등록, 직접생산확인</td><td class="us">보유</td><td class="src">직접생산 제2026-0447-00385호</td></tr>
         </tbody>
       </table>
     </div>
+    <h3 class="sub">인증서 · 시험성적서 원본 보기</h3>
+    <div class="certs">
+        <a class="cert" href="images/cert-patent-2785102.jpg"><span class="thumb"><img src="images/cert-patent-2785102.jpg" alt="특허 제10-2785102호" loading="lazy"></span><b>특허 제10-2785102호</b><small>교차로 상의 스마트 교통신호 표출 시스템 및 그의 제어 방법</small></a>
+        <a class="cert" href="images/cert-patent-3010374.jpg"><span class="thumb"><img src="images/cert-patent-3010374.jpg" alt="특허 제10-3010374호 (세양테크 공동)" loading="lazy"></span><b>특허 제10-3010374호 (세양테크 공동)</b><small>조도 연동형 신호등 일괄 디밍 제어 시스템 및 그 방법</small></a>
+        <a class="cert" href="images/cert-kc.jpg"><span class="thumb"><img src="images/cert-kc.jpg" alt="방송통신기자재 적합등록증" loading="lazy"></span><b>방송통신기자재 적합등록증</b><small>R-R-LRd-LROAD-SVR-01 · 국립전파연구원</small></a>
+        <a class="cert" href="images/cert-direct.jpg"><span class="thumb"><img src="images/cert-direct.jpg" alt="직접생산확인증명서" loading="lazy"></span><b>직접생산확인증명서</b><small>제2026-0447-00385호 · 교통신호등</small></a>
+        <a class="cert" href="images/cert-factory.jpg"><span class="thumb"><img src="images/cert-factory.jpg" alt="공장등록증명서" loading="lazy"></span><b>공장등록증명서</b><small>교통 신호장치 제조업 · 오산시</small></a>
+        <a class="cert" href="images/cert-koneps.jpg"><span class="thumb"><img src="images/cert-koneps.jpg" alt="경쟁입찰참가자격등록증" loading="lazy"></span><b>경쟁입찰참가자격등록증</b><small>조달청 나라장터 · 물품 분야</small></a>
+        <a class="cert" href="images/cert-kiel-r02.jpg"><span class="thumb"><img src="images/cert-kiel-r02.jpg" alt="경찰청 표준규격(R02) 성능시험 성적서" loading="lazy"></span><b>경찰청 표준규격(R02) 성능시험 성적서</b><small>키엘연구원 KIEL2607-F07853</small></a>
+        <a class="cert" href="images/cert-kiel-emc.jpg"><span class="thumb"><img src="images/cert-kiel-emc.jpg" alt="전자파 적합성 시험성적서" loading="lazy"></span><b>전자파 적합성 시험성적서</b><small>키엘연구원 KIEL2606-KF07135</small></a>
+        <a class="cert" href="images/cert-koroad.jpg"><span class="thumb"><img src="images/cert-koroad.jpg" alt="도로교통공단 시험성적서" loading="lazy"></span><b>도로교통공단 시험성적서</b><small>소비전력·휘도 시험 KOROAD-G2026-B21-0001</small></a>
+    </div>
+    <dialog id="cert-lb" class="lb"><button type="button" aria-label="닫기">×</button><img src="" alt=""><p></p></dialog>
     <div class="row" style="margin-top:40px">
       <div class="col">
         <h3 style="font-size:21px">현장 실증: 건설기술연구원 SOC 실증센터(연천)</h3>
@@ -678,8 +723,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
       <p class="kicker">도입 안내</p>
       <h2>지자체 담당자를 위한 구매·유지관리 안내</h2>
     </div>
+    <div class="procure">
+      <dl>
+        <dt>등록 시스템</dt><dd>조달청 목록정보시스템 (나라장터)</dd>
+        <dt>물품 분류</dt><dd>공공안전및치안장비 › 교통통제장비 › 교통신호등</dd>
+        <dt>품명</dt><dd>LED 교통신호등 (조광제어겸용)</dd>
+        <dt>물품식별번호</dt><dd>[물품식별번호 기재]</dd>
+        <dt>모델</dt><dd>LROAD-SVR-01, LROAD-SVY-01, LROAD-SVG-01, LROAD-SVA-01, LROAD-SPR-01, LROAD-SPG-01</dd>
+        <dt>제조사</dt><dd>㈜라이트로드 (직접생산확인 제2026-0447-00385호)</dd>
+      </dl>
+      <div class="go">
+        <p>나라장터 목록정보에서 물품식별번호나 '라이트로드'로 검색하면 규격과 가격을 확인할 수 있습니다.</p>
+        <a href="https://www.g2b.go.kr" target="_blank" rel="noopener">나라장터 바로가기</a>
+      </div>
+    </div>
     <div class="cards">
-      <div class="card"><h3>구매 방법</h3><p>나라장터 등록: [물품식별번호 기재]<br>혁신제품 지정: [지정번호 기재]</p></div>
+      <div class="card"><h3>구매 방법</h3><p>나라장터에서 물품식별번호 또는 '라이트로드'로 검색해 구매하실 수 있습니다. 혁신제품 지정: [지정번호 기재]</p></div>
       <div class="card"><h3>설치</h3><p>기존 신호제어기 호환. 설치비는 일반 신호등과 같습니다. 조도센서부는 통상 지주 1개에 차량용·보행용 각 1대를 권장하며, 인공광원이 직접 비치는 곳은 피해 설치합니다.</p></div>
       <div class="card"><h3>A/S</h3><p>3년 이내 무상. 3~10년은 부품비·출장비 실비만 받고 별도 이윤은 없습니다. 정기점검이나 소모품 비용은 없습니다.</p></div>
       <div class="card"><h3>시범 설치</h3><p>빛공해 민원이 잦은 교차로를 대상으로 지자체와 함께 시범 운영을 진행합니다. 에너지 절감과 정상 작동, 운전자·보행자 판독성을 함께 평가합니다.</p></div>
@@ -691,13 +750,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
   <div class="wrap">
     <div class="head">
       <p class="kicker">자료실</p>
-      <h2>내부 검토에 필요한 자료를 바로 받으세요</h2>
+      <h2>제품 자료실</h2>
     </div>
-    <div class="docs">
-      <a href="docs/spec.pdf" download>제품 규격서<span>PDF 받기</span></a>
-      <a href="docs/manual.pdf" download>시방서 · 유지관리 지침서<span>PDF 받기</span></a>
-      <a href="docs/certificates.pdf" download>시험성적서 · 인증서 모음<span>PDF 받기</span></a>
-      <a href="docs/brochure.pdf" download>제품 소개서<span>PDF 받기</span></a>
+    <div class="soon">
+      <div><b>자료실은 현재 준비 중입니다</b><p>제품 자료와 관련해 상담을 원하시면 연락 주세요.</p></div>
+      <div class="acts"><a class="p" href="mailto:lightroad47@gmail.com?subject=%EC%A0%9C%ED%92%88%20%EC%9E%90%EB%A3%8C%20%EC%83%81%EB%8B%B4">이메일 문의</a><a href="tel:070-7543-3943">070-7543-3943</a></div>
     </div>
   </div>
 </section>
@@ -716,7 +773,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
     <div class="col">
       <h3 style="font-size:18px">지식재산</h3>
       <div class="ip"><b>특허 제10-2785102호</b><span>교차로 상의 스마트 교통신호 표출 시스템 및 그의 제어 방법</span></div>
-      <div class="ip"><b>특허 제10-3010374호</b><span>조도 연동형 신호등 일괄 디밍 제어 시스템 및 그 방법</span></div>
+      <div class="ip"><b>특허 제10-3010374호 (세양테크 공동)</b><span>조도 연동형 신호등 일괄 디밍 제어 시스템 및 그 방법</span></div>
       <div class="ip"><b>디자인 제30-1356488호</b><span>조도센서 케이스</span></div>
     </div>
   </div>
@@ -762,6 +819,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 2
     f.allowFullscreen=true;
     b.replaceWith(f);
   });
+})();
+</script>
+
+<script>
+(function(){
+  var d=document.getElementById('cert-lb'); if(!d||!d.showModal) return;
+  var im=d.querySelector('img'), cap=d.querySelector('p');
+  document.querySelectorAll('.cert').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();im.src=a.getAttribute('href');im.alt=a.querySelector('img').alt;cap.textContent=a.querySelector('b').textContent;d.showModal()});
+  });
+  d.querySelector('button').addEventListener('click',function(){d.close()});
+  d.addEventListener('click',function(e){if(e.target===d)d.close()});
 })();
 </script>
 </body>
